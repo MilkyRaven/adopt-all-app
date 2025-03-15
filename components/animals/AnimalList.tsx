@@ -1,17 +1,23 @@
 import React from "react";
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
+import { Link } from "expo-router";
 import AnimalThumbnail from "./AnimalThumbnail";
+import { animals } from '../../mockData'
 
 export default function AnimalList() {
-
-    const animals = [{ id: '1', name: 'Lucky', species: 'Cat', distance: '10km from you', neutered: 'Neutered', age: 'Junior', image: "https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf" },
-    { id: '2', name: 'Luna', species: 'Dog', distance: '18km from you', neutered: 'Neutered', age: 'Junior', image: "https://images.unsplash.com/photo-1611250282006-4484dd3fba6b" }];
-
     return (
         <View>
             <FlatList
                 data={animals}
-                renderItem={({ item }) => <AnimalThumbnail {...item} />}
+                renderItem={({ item }) => (
+                    <Link
+                        href={{
+                            pathname: '/[id]',
+                            params: { ...item } //TO-DO: not sure if this is correct, but i want to avoid an extra call
+                        }}>
+                        <AnimalThumbnail {...item} />
+                    </Link>
+                )}
                 keyExtractor={item => item.id}
             />
         </View>
