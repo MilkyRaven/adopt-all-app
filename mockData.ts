@@ -1,4 +1,5 @@
 import { Animal } from "./modules/animal/domain/Animal";
+import { Application } from "./modules/application/domain/Application";
 
 export const animals: Animal[] = [
   {
@@ -49,5 +50,16 @@ export const animals: Animal[] = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     entryDate: "10 de Enero de 2025",
     location: { lat: 37.3886, lon: -5.9823 },
+  },
+];
+
+export const applications: Application[] = [
+  {
+    id: "1",
+    animalId: 2,
+    fullName: "Milky Kiwi",
+    email: "milkykiwidev@gmail.com",
+    comments: "I have a big yard and I love animals!",
+    createdAt: "1 de Marzo de 2025",
   },
 ];

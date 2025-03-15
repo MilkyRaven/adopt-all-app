@@ -1,6 +1,6 @@
 // /app/explore/[id].tsx
 import { View, Text, Button } from "react-native";
-import { useLocalSearchParams } from 'expo-router';
+import { Link, useLocalSearchParams } from 'expo-router';
 import AnimalAvatar from "@/components/animals/AnimalAvatar";
 
 const AnimalDetail = () => {
@@ -14,7 +14,13 @@ const AnimalDetail = () => {
             <Text>Neutered: {animalDetails.neutered}</Text>
             <Text>{animalDetails.age}</Text>
             <Text>{animalDetails.description}</Text>
-            <Button title="Adopt" onPress={() => console.log("Adopt button pressed for...", animalDetails.name)} />
+            <Link
+                href={{
+                    pathname: '/applications/create',
+                    params: { id: animalDetails.id }
+                }}>
+                Adopt
+            </Link>
 
         </View>
     );
