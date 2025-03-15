@@ -7,7 +7,11 @@ export const animals = [
     neutered: "Neutered",
     age: "Junior",
     image: "https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    entryDate: "3 de Marzo de 2025",
   },
+
   {
     id: "2",
     name: "Luna",
@@ -16,5 +20,32 @@ export const animals = [
     neutered: "Neutered",
     age: "Junior",
     image: "https://images.unsplash.com/photo-1611250282006-4484dd3fba6b",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    entryDate: "10 de Marzo de 2025",
+  },
+  {
+    id: "3",
+    name: "Mochi",
+    species: "Rat",
+    distance: "5km from you",
+    neutered: "Neutered",
+    age: "Senior",
+    image: "https://images.unsplash.com/photo-1575485670541-824ff288aaf8",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    entryDate: "1 de Marzo de 2025",
+  },
+  {
+    id: "4",
+    name: "Linda",
+    species: "Pig",
+    distance: "18km from you",
+    neutered: "Neutered",
+    age: "Mid",
+    image: "https://images.unsplash.com/photo-1541689221361-ad95003448dc",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    entryDate: "10 de Enero de 2025",
   },
 ];
