@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import LocationTracker from '@/components/location/LocationTracker';
 
 export default function Index() {
   return (
@@ -10,6 +11,7 @@ export default function Index() {
       }}
     >
       <Text>Welcome to Adopt All!</Text>
+      <LocationTracker />
     </View>
   );
 }
