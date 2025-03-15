@@ -1,13 +1,34 @@
 import React from "react";
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import AnimalAvatar from "./AnimalAvatar";
 
-export default function AnimalThumbnail() {
+interface AnimalThumbnailProps {
+    image: string;
+    name: string;
+    species: string;
+    distance: string;
+    neutered: string;
+    age: string;
+}
 
+export default function AnimalThumbnail({
+    image,
+    name,
+    species,
+    distance,
+    neutered,
+    age,
+}: AnimalThumbnailProps) {
     return (
-        <View>
-            {/* TO-DO: pasar real props */}
-            <AnimalAvatar imageUrl="https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf" size="thumbnail" />
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <AnimalAvatar image={image} size="thumbnail" />
+            <View>
+                <Text>{name}</Text>
+                <Text>{species}</Text>
+                <Text>{distance}</Text>
+                <Text>{neutered}</Text>
+                <Text>{age}</Text>
+            </View>
         </View>
     );
 }
