@@ -18,8 +18,8 @@ export default function LocationTracker() {
       {loading && <Text>Loading location...</Text>}
       {location && (
         <>
-          <Text>Latitude: {location.latitude}</Text>
-          <Text>Longitude: {location.longitude}</Text>
+          <Text>Latitude: {location.lat}</Text>
+          <Text>Longitude: {location.lon}</Text>
           <Text>Last Update: {new Date(location.timestamp).toLocaleString()}</Text>
         </>
       )}

@@ -1,5 +1,5 @@
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from "expo-location";
-import { Location } from "../domain/Location";
+import { Location, LocationWithTimestamp } from "../domain/Location";
 import { LocationService } from "../domain/Location";
 
 export class ExpoLocationService implements LocationService {
@@ -7,12 +7,12 @@ export class ExpoLocationService implements LocationService {
         const { status } = await requestForegroundPermissionsAsync();
         return status === "granted";
     }
-    async fetchCurrentLocation(): Promise<Location | null> {
+    async fetchCurrentLocation(): Promise<LocationWithTimestamp | null> {
         try {
             const location = await getCurrentPositionAsync({});
             return {
-                latitude: location.coords.latitude,
-                longitude: location.coords.longitude,
+                lat: location.coords.latitude,
+                lon: location.coords.longitude,
                 timestamp: location.timestamp,
             };
         } catch (error) {

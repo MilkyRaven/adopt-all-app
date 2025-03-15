@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Location, LocationService } from "../domain/Location";
+import { Location, LocationService, LocationWithTimestamp } from "../domain/Location";
 
 export function useLocation(locationService: LocationService) {
-    const [location, setLocation] = useState<Location | null>(null);
+    const [location, setLocation] = useState<LocationWithTimestamp | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
