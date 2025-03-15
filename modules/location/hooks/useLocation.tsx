@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
-import { Location, LocationService } from "../domain/Location";
+import { LocationWithTimestamp } from "../domain/Location";
+import { ExpoLocation } from "../infraestructure/ExpoLocation";
+import { GetUserLocation } from "../application/GetUserLocation";
 
-export function useLocation(locationService: LocationService) {
-    const [location, setLocation] = useState<Location | null>(null);
+const locationService = new ExpoLocation();
+const getUserLocation = new GetUserLocation(locationService);
+
+export function useLocation() {
+    const [location, setLocation] = useState<LocationWithTimestamp | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         (async () => {
             setLoading(true);
-            const hasPermission = await locationService.requestPermission();
-            if (!hasPermission) {
-                setError("Location permission denied ❌");
-                setLoading(false);
-                return;
-            }
-            const currentLocation = await locationService.fetchCurrentLocation();
+            const currentLocation = await getUserLocation.execute();
             if (currentLocation) {
                 setLocation(currentLocation);
             } else {
