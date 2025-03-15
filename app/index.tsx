@@ -1,17 +1,19 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import LocationTracker from '@/components/location/LocationTracker';
+import AnimalList from "@/components/animals/AnimalList";
+import WelcomeBanner from "@/components/WelcomeBanner";
 
 export default function Index() {
   return (
     <View
       style={{
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Text>Welcome to Adopt All!</Text>
+      <WelcomeBanner />
       <LocationTracker />
+      <AnimalList />
     </View>
   );
 }
