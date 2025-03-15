@@ -5,7 +5,7 @@ import AnimalThumbnail from "./AnimalThumbnail";
 import { animals } from '../../mockData'
 import { useLocation } from "@/modules/location/hooks/useLocation";
 import { ExpoLocationService } from "@/modules/location/infraestructure/ExpoLocation";
-import { CalculateDistanceFromTwoPointsInKm } from "@/modules/location/application/CalculateDistanceFromTwoPointsInKm";
+import { CalculateDistanceFromUserToAnimal } from "@/modules/location/application/CalculateDistanceFromUserToAnimal";
 import { CalculateDistanceGeolib } from "@/modules/location/infraestructure/CalculateDistanceGeolib";
 import { AnimalWithDistance } from "@/modules/animal/domain/Animal";
 
@@ -17,7 +17,7 @@ export default function AnimalList() {
     console.log("location", location);
     //calculate distance
     const geolib = new CalculateDistanceGeolib();
-    const calculateDistance = new CalculateDistanceFromTwoPointsInKm(geolib);
+    const calculateDistance = new CalculateDistanceFromUserToAnimal(geolib);
     useEffect(() => {
         if (location) {
             const updatedAnimals = animals.map(animal => ({

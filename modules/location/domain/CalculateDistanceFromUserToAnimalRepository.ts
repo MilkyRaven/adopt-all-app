@@ -1,5 +1,5 @@
 import { Location } from "./Location";
 
-export interface CalculateDistanceFromTwoPointsRepository {
+export interface CalculateDistanceFromUserToAnimalRepository {
   calculateDistanceFromTwoPointsInKm(from: Location, to: Location): number;
 }

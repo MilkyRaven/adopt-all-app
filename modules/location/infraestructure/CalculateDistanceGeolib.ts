@@ -1,9 +1,9 @@
 import { getDistance } from "geolib";
-import { CalculateDistanceFromTwoPointsRepository } from "../domain/CalculateDistanceFromTwoPointsRepository";
+import { CalculateDistanceFromUserToAnimalRepository } from "../domain/CalculateDistanceFromUserToAnimalRepository";
 import { Location } from "../domain/Location";
 
 export class CalculateDistanceGeolib
-  implements CalculateDistanceFromTwoPointsRepository
+  implements CalculateDistanceFromUserToAnimalRepository
 {
   calculateDistanceFromTwoPointsInKm(from: Location, to: Location): number {
     const distanceInMeters = getDistance(
