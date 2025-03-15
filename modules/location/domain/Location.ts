@@ -6,7 +6,6 @@ export interface Location {
 export interface LocationWithTimestamp extends Location {
   timestamp: number;
 }
-export interface LocationService {
-  requestPermission(): Promise<boolean>;
-  fetchCurrentLocation(): Promise<LocationWithTimestamp | null>;
+export interface LocationRepository {
+  getCurrentLocation(): Promise<LocationWithTimestamp | null>;
 }

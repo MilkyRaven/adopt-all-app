@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from 'react-native';
 import AnimalAvatar from "./AnimalAvatar";
-import { Animal, AnimalWithDistance } from "@/modules/animal/domain/Animal";
+import { AnimalWithDistance } from "@/modules/animal/domain/Animal";
 
 
 
@@ -13,7 +13,6 @@ export default function AnimalThumbnail({
     age,
     distance
 }: AnimalWithDistance) {
-    console.log(distance);
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <AnimalAvatar image={image} size="thumbnail" />
