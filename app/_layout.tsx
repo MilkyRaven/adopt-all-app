@@ -1,12 +1,12 @@
-import { Slot, useSegments } from "expo-router";
-import { useEffect } from "react";
+import React from 'react';
+import { Slot } from 'expo-router';
+import { ThemeProviderWrapper } from '@/modules/shared/ThemeProviderWrapper';
 
-export default function RootLayout() {
-  // const segments = useSegments();
+export default function App() {
 
-  // useEffect(() => {
-  //   console.log("Current stack:", segments);
-  // }, [segments]);
-
-  return <Slot />;
+  return (
+    <ThemeProviderWrapper>
+      <Slot />
+    </ThemeProviderWrapper>
+  );
 }
