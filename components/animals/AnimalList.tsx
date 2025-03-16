@@ -45,7 +45,7 @@ export default function AnimalList() {
                 renderItem={({ item }) => (
                     <Link
                         href={{
-                            pathname: '/[id]',
+                            pathname: '/explore/[id]',
                             params: { ...item } //TO-DO: not sure if this is correct, but i want to avoid an extra call
                         }}>
                         <AnimalThumbnail {...item} />

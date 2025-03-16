@@ -9,19 +9,19 @@ export default function TabLayout() {
                 headerShown: false,
             }}>
             <Tabs.Screen
-                name="index"
+                name="explore"
                 options={{
                     title: 'Explore'
                 }}
             />
             <Tabs.Screen
-                name="applications/index"
+                name="applications"
                 options={{
                     title: 'My applications'
                 }}
             />
             <Tabs.Screen
-                name="settings/index"
+                name="settings"
                 options={{
                     title: 'Settings'
                 }}
