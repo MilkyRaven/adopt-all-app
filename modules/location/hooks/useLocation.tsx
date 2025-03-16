@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LocationWithTimestamp } from "../domain/Location";
 import { ExpoLocation } from "../infraestructure/ExpoLocation";
-import { GetUserLocation } from "../application/GetUserLocation";
+import { GetUserLocation } from "../application/getUserLocation";
 
 const locationService = new ExpoLocation();
 const getUserLocation = new GetUserLocation(locationService);
