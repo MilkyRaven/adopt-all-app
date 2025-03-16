@@ -3,7 +3,7 @@ import LocationTracker from '@/components/location/LocationTracker';
 import AnimalList from "@/components/animals/AnimalList";
 import WelcomeBanner from "@/components/WelcomeBanner";
 
-export default function Index() {
+export default function Explore() {
   return (
     <View
       style={{
