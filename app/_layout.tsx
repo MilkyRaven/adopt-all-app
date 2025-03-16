@@ -1,7 +1,12 @@
-import { Stack } from "expo-router";
+import { Slot, useSegments } from "expo-router";
+import { useEffect } from "react";
 
 export default function RootLayout() {
-  return <Stack>
-    <Stack.Screen name="(tabs)" options={{ headerTitle: "Adopt All" }} />
-  </Stack>;
+  // const segments = useSegments();
+
+  // useEffect(() => {
+  //   console.log("Current stack:", segments);
+  // }, [segments]);
+
+  return <Slot />;
 }
