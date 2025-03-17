@@ -8,11 +8,15 @@ type ApplicationForm = Omit<
   "animalId" | "userId" | "id" | "createdAt"
 >;
 
-export default function useApplicationForm() {
+export default function useApplicationForm({
+  fullName,
+  email,
+  comments,
+}: Partial<ApplicationForm> = {}) {
   const [formData, setFormData] = useState<ApplicationForm>({
-    fullName: "",
-    email: "",
-    comments: "",
+    fullName: fullName ?? "",
+    email: email ?? "",
+    comments: comments ?? "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -35,10 +39,17 @@ export default function useApplicationForm() {
       setLoading(false);
     }
   };
-
+  const handleUpdate = async (applicationId: string) => {
+    try {
+      await repository.application.updateApplication(applicationId, formData);
+      router.replace("/applications");
+    } catch (error) {
+      console.error("Failed to update application:", error);
+    }
+  };
   const handleOnChange = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
-  return { loading, formData, handleSubmit, handleOnChange };
+  return { loading, formData, handleSubmit, handleUpdate, handleOnChange };
 }
