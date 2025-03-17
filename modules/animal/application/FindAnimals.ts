@@ -3,7 +3,7 @@ import { AnimalRepository } from "../domain/repositories/AnimalRepository";
 
 export class FindAnimals {
   constructor(private repository: AnimalRepository) {}
-  async execute(): Promise<Animal[]> {
-    return this.repository.findAnimals();
+  async execute(query?: string): Promise<Animal[]> {
+    return this.repository.findAnimals(query);
   }
 }
