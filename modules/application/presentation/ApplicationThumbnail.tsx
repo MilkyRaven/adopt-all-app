@@ -6,7 +6,6 @@ interface Props {
     application: Application
 }
 export default function ApplicationThumbnail({ application }: Props) {
-    console.log(application)
     return (
         <View>
             {/* <AnimalAvatar size="thumbnail" image="" /> */}
