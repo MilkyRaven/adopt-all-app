@@ -1,36 +1,15 @@
-import { View, TextInput, Button } from 'react-native'
-import { router } from 'expo-router';
-import React, { useState } from 'react'
+import { useLocalSearchParams } from 'expo-router';
+import useApplicationForm from '@/modules/application/infraestructure/hooks/useApplicationForm';
+import ApplicationForm from '@/modules/application/presentation/ApplicationForm';
+
 
 export default function CreateApplicationScreen() {
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [comments, setComments] = useState('');
-
-    const handleSubmit = () => {
-        console.log('Full Name:', fullName);
-        console.log('Email:', email);
-        console.log('Comments:', comments);
-        router.dismissTo('/applications');
-    };
+    const { animalId } = useLocalSearchParams();
+    const { formData, handleOnChange, handleSubmit } = useApplicationForm();
     return (
-        <View>
-            <TextInput
-                placeholder='Full Name'
-                value={fullName}
-                onChangeText={setFullName}
-            />
-            <TextInput
-                placeholder='Email'
-                value={email}
-                onChangeText={setEmail}
-            />
-            <TextInput
-                placeholder='Comments'
-                value={comments}
-                onChangeText={setComments}
-            />
-            <Button title='Submit' onPress={handleSubmit} />
-        </View>
+        <ApplicationForm
+            formData={formData}
+            handleOnChange={handleOnChange}
+            handleSubmit={() => handleSubmit(animalId as string)} />
     )
 }

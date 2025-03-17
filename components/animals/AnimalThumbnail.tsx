@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from 'react-native';
 import AnimalAvatar from "./AnimalAvatar";
-import { AnimalWithDistance } from "@/modules/animal/domain/Animal";
+import { AnimalWithDistance } from "@/modules/animal/domain/entities/Animal";
 
 
 

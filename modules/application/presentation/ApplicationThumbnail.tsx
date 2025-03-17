@@ -1,8 +1,6 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
-import AnimalAvatar from '../animals/AnimalAvatar'
-import { Application } from '@/modules/application/domain/Application'
-import { Link } from 'expo-router'
+import { Application } from '@/modules/application/domain/entities/Application'
 
 interface Props {
     application: Application

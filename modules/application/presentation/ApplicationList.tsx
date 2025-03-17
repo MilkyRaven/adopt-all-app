@@ -1,10 +1,11 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Text } from 'react-native'
 import React from 'react'
-import { applications } from '@/mockData'
 import ApplicationThumbnail from './ApplicationThumbnail'
 import { Link } from 'expo-router'
+import useGetApplications from '../infraestructure/hooks/useGetApplications'
 
 export default function ApplicationList() {
+    const applications = useGetApplications();
     return (
         <View>
             <FlatList
