@@ -1,5 +1,5 @@
 import { Animal } from "./modules/animal/domain/Animal";
-import { Application } from "./modules/application/domain/Application";
+import { Application } from "./modules/application/domain/entities/Application";
 
 export const animals: Animal[] = [
   {
@@ -57,6 +57,7 @@ export const applications: Application[] = [
   {
     id: "1",
     animalId: 2,
+    userId: "5X1x1RbgnCLAoXxBvBOf",
     fullName: "Milky Kiwi",
     email: "milkykiwidev@gmail.com",
     comments: "I have a big yard and I love animals!",
