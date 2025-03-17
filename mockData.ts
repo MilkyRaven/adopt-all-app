@@ -1,4 +1,4 @@
-import { Animal } from "./modules/animal/domain/Animal";
+import { Animal } from "./modules/animal/domain/entities/Animal";
 import { Application } from "./modules/application/domain/entities/Application";
 
 export const animals: Animal[] = [

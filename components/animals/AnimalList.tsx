@@ -6,7 +6,7 @@ import { animals } from '../../mockData'
 import { useLocation } from "@/modules/location/hooks/useLocation";
 import { CalculateDistanceFromUserToAnimal } from "@/modules/location/application/CalculateDistanceFromUserToAnimal";
 import { CalculateDistanceGeolib } from "@/modules/location/infraestructure/CalculateDistanceGeolib";
-import { Animal, AnimalWithDistance } from "@/modules/animal/domain/Animal";
+import { Animal, AnimalWithDistance } from "@/modules/animal/domain/entities/Animal";
 import { Location } from "@/modules/location/domain/Location";
 //calculate distance
 const geolib = new CalculateDistanceGeolib();
