@@ -14,7 +14,6 @@ export default function AnimalFilterSelection() {
     const [tempFilters, setTempFilters] = useState({ ...filter });
 
     const handleApply = () => {
-        console.log("here");
         updateFilter(tempFilters)
     };
 

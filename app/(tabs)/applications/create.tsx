@@ -1,36 +1,41 @@
-import { View, TextInput, Button } from 'react-native'
-import { router } from 'expo-router';
-import React, { useState } from 'react'
+import { View, TextInput, Button, ActivityIndicator } from 'react-native'
+import { useLocalSearchParams } from 'expo-router';
+import useApplicationForm from '@/modules/application/infraestructure/hooks/useApplicationForm';
+
 
 export default function CreateApplicationScreen() {
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [comments, setComments] = useState('');
+    const { animalId } = useLocalSearchParams();
+    const { loading, formData, handleOnChange, handleSubmit } = useApplicationForm();
 
-    const handleSubmit = () => {
-        console.log('Full Name:', fullName);
-        console.log('Email:', email);
-        console.log('Comments:', comments);
-        router.dismissTo('/applications');
-    };
     return (
         <View>
             <TextInput
                 placeholder='Full Name'
-                value={fullName}
-                onChangeText={setFullName}
+                value={formData.fullName}
+                onChangeText={
+                    (input: string) => { handleOnChange('fullName', input) }
+                }
             />
             <TextInput
                 placeholder='Email'
-                value={email}
-                onChangeText={setEmail}
+                value={formData.email}
+                onChangeText={
+                    (input: string) => { handleOnChange('email', input) }
+                }
             />
             <TextInput
                 placeholder='Comments'
-                value={comments}
-                onChangeText={setComments}
+                value={formData.comments}
+                onChangeText={
+                    (input: string) => { handleOnChange('comments', input) }
+                }
+
             />
-            <Button title='Submit' onPress={handleSubmit} />
+            {loading ? (
+                <ActivityIndicator size="large" />
+            ) : (
+                <Button title='Submit' onPress={() => handleSubmit(animalId as string)} />
+            )}
         </View>
     )
 }

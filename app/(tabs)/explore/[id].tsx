@@ -22,7 +22,7 @@ const AnimalDetail = () => {
                 router.dismissAll()
                 router.replace({
                     pathname: '/applications/create',
-                    params: { id: animalDetails.id }
+                    params: { animalId: animalDetails.id }
                 });
             }}>
                 <Text style={{ color: 'blue' }}>Adopt</Text>
