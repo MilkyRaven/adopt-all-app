@@ -1,6 +1,6 @@
 export interface Application {
   id: string;
-  animalId: number;
+  animalId: string;
   userId: string;
   fullName: string;
   email: string;
