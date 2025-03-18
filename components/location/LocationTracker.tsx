@@ -1,6 +1,7 @@
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useLocation } from "@/modules/location/hooks/useLocation";
-
+import { borderRadius, colors, spacing } from "@/modules/shared/themes/styles";
+import Text from "../shared/Text";
 //TO-DO: should i really be doing this here? i don't think so:
 //may be breaking separation of concerns -> rendering UI and instantiating a service
 //to test this component I will depend on ExpoLocationService
@@ -14,11 +15,14 @@ export default function LocationTracker() {
       {error && <Text>{error}</Text>}
       {loading && <Text>Loading location...</Text>}
       {location && (
-        <>
-          <Text>Latitude: {location.lat}</Text>
-          <Text>Longitude: {location.lon}</Text>
-          <Text>Last Update: {new Date(location.timestamp).toLocaleString()}</Text>
-        </>
+        <View style={styles.locationContainer}>
+          <View style={styles.locationRow}>
+            <Text type="h3">Your location</Text>
+            <Text type="support">Lat {location.lat}</Text>
+            <Text type="support">Lon {location.lon}</Text>
+          </View>
+          <Text type="support">Last Update {new Date(location.timestamp).toLocaleString()}</Text>
+        </View>
       )}
     </View>
   );
@@ -26,8 +30,17 @@ export default function LocationTracker() {
 //TO-DO: añado un estilo super básisco para tener claras las boundaries del componente
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
-    borderWidth: 1,
-    borderColor: "#000",
+    padding: spacing.md,
+    backgroundColor: colors.background,
+    borderRadius: borderRadius.md,
   },
+  locationContainer: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  locationRow: {
+    flexDirection: "row",
+    gap: spacing.sm,
+    alignItems: "baseline"
+  }
 });
