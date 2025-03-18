@@ -1,7 +1,9 @@
-import React from "react";
-import { View, Text } from 'react-native';
+import { StyleSheet, View } from "react-native";
+import Text from "../shared/Text";
 import AnimalAvatar from "./AnimalAvatar";
 import { AnimalWithDistance } from "@/modules/animal/domain/entities/Animal";
+import AnimalLabel from "./AnimalLabel";
+import { borderRadius, colors, spacing } from "@/modules/shared/themes/styles";
 
 
 
@@ -14,15 +16,32 @@ export default function AnimalThumbnail({
     distance
 }: AnimalWithDistance) {
     return (
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={styles.animalContainer}>
             <AnimalAvatar image={image} size="thumbnail" />
             <View>
-                <Text>{name}</Text>
-                <Text>{species}</Text>
-                <Text>A {distance} de ti</Text>
-                <Text>{neutered ? 'Neutered' : 'Not Neutered'}</Text>
-                <Text>{age}</Text>
+                <Text type="h2">{name}</Text>
+                <Text type="support">{species}</Text>
+                <Text type="support"> {distance} Km from you</Text>
+                <View style={styles.labelContainer}>
+                    <AnimalLabel labelText={neutered ? 'Neutered' : 'Not Neutered'} />
+                    <AnimalLabel labelText={age} />
+                </View>
             </View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    animalContainer: {
+        flexDirection: 'row',
+        padding: spacing.md,
+        backgroundColor: colors.background,
+        borderRadius: borderRadius.md,
+        gap: spacing.md,
+        width: "100%"
+    },
+    labelContainer: {
+        flexDirection: 'row',
+        gap: spacing.xs
+    }
+})

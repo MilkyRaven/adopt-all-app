@@ -1,12 +1,22 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
+import Text from '@/components/shared/Text';
 import React, { useState } from 'react';
 import { useAnimalFilter } from '@/modules/animal/presentation/FilterContext';
-import { Link } from 'expo-router';
+import AnimalLabel from '@/components/animals/AnimalLabel';
+import Spacing from '@/components/shared/Spacing';
+import Button from '@/components/shared/Button';
+import { spacing } from '@/modules/shared/themes/styles';
+import LineBreak from '@/components/shared/LineBreak';
 
-// Define the possible filter values here
-const speciesOptions = ["any", "cat", "dog", "rat", "pig"];
-const ageOptions = ["null", "junior", "mid", "senior"];
-const orderByOptions = ["desc", "asc"];
+const speciesOptions = ["Cat", "Dog", "Rat", "Pig"];
+const ageOptions = ["Junior", "Mid", "Senior"];
+const orderByOptions = ["desc", "asc"] as const;
+type OrderByOption = typeof orderByOptions[number];
+
+const orderByDisplayText: Record<OrderByOption, string> = {
+    "desc": "Newest rescues",
+    "asc": "Longest Residents"
+};
 
 export default function AnimalFilterSelection() {
     const { filter, updateFilter, resetFilter } = useAnimalFilter();
@@ -23,45 +33,51 @@ export default function AnimalFilterSelection() {
     };
 
     return (
-        <View>
-            <Text>Filter By</Text>
-
-            {/* Order By Filter */}
-            <Text>Order By: {tempFilters.orderBy}</Text>
-            {orderByOptions.map((order) => (
-                <TouchableOpacity key={order} onPress={() => setTempFilters({ ...tempFilters, orderBy: order })}>
-                    <Text>{order}</Text>
-                </TouchableOpacity>
-            ))}
-
-            {/* Species Filter */}
-            <Text>Species: {tempFilters.species}</Text>
-            {speciesOptions.map((species) => (
-                <TouchableOpacity key={species} onPress={() => setTempFilters({ ...tempFilters, species: species })}>
-                    <Text>{species}</Text>
-                </TouchableOpacity>
-            ))}
-
-            {/* Neutered Filter */}
-            <Text>Neutered? {tempFilters.neutered === null ? "Any" : tempFilters.neutered ? "Yes" : "No"}</Text>
-            <TouchableOpacity onPress={() => setTempFilters({ ...tempFilters, neutered: !tempFilters.neutered })}>
-                <Text>Toggle Neutered</Text>
-            </TouchableOpacity>
-
-            {/* Age Filter */}
-            <Text>Age: {tempFilters.age || "Any"}</Text>
-            {ageOptions.map((age) => (
-                <TouchableOpacity key={age} onPress={() => setTempFilters({ ...tempFilters, age: age === "null" ? null : age })}>
-                    <Text>{age === "null" ? "Any" : age}</Text>
-                </TouchableOpacity>
-            ))}
-            {/* Apply and Reset Buttons */}
-            <Link href="../" onPress={handleApply}>
-                <Text>Apply Filters</Text>
-            </Link>
-            <Link href="../" onPress={handleReset}>
-                <Text>Reset</Text>
-            </Link>
+        <View style={{ padding: spacing.md }}>
+            <View>
+                <Text type='h2'>Sort By</Text>
+                <LineBreak />
+                <Spacing type='sm' />
+                <View style={{ flexDirection: 'row', gap: 8 }}>
+                    {orderByOptions.map((order) => (
+                        <TouchableOpacity key={order} onPress={() => setTempFilters({ ...tempFilters, orderBy: order })}>
+                            <AnimalLabel labelText={orderByDisplayText[order]} isActive={tempFilters.orderBy === order} />
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </View>
+            <Spacing type='lg' />
+            <View>
+                <Text type='h2'>Filter by</Text>
+                <LineBreak />
+                <Spacing type='sm' />
+                <Text type='h3'>Species</Text>
+                <Spacing type='sm' />
+                <View style={{ flexDirection: 'row', gap: 8 }}>
+                    {speciesOptions.map((species) => (
+                        <TouchableOpacity key={species} onPress={() => setTempFilters({ ...tempFilters, species: species })}>
+                            <AnimalLabel labelText={species} isActive={tempFilters.species === species} />
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </View>
+            <Spacing type='md' />
+            <View>
+                <Text type='h3'>Age</Text>
+                <Spacing type='sm' />
+                <View style={{ flexDirection: 'row', gap: 8 }}>
+                    {ageOptions.map((age) => (
+                        <TouchableOpacity key={age} onPress={() => setTempFilters({ ...tempFilters, age: age === "null" ? null : age })}>
+                            <AnimalLabel labelText={age} isActive={tempFilters.age === age} />
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </View>
+            <Spacing type='xl' />
+            <View style={{ flexDirection: 'row', gap: 8, alignSelf: "center" }}>
+                <Button title="Clear Filters" href="../" onPress={handleReset} />
+                <Button title="Show results" href="../" onPress={handleApply} />
+            </View>
         </View>
     );
 }

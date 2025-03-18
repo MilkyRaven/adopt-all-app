@@ -1,10 +1,12 @@
 import { createContext, useState, useContext, ReactNode } from "react";
 
+type OrderByOption = "asc" | "desc";
+
 interface FilterState {
     species: string;
     neutered: boolean | null;
     age: string | null;
-    orderBy: string; //asc | desc
+    orderBy: OrderByOption;
 }
 
 const defaultFilterState: FilterState = {

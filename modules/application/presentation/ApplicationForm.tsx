@@ -1,5 +1,8 @@
-import { View, TextInput, Button } from 'react-native'
-import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import TextInput from '@/components/shared/TextInput';
+import Spacing from '@/components/shared/Spacing';
+import { spacing } from '@/modules/shared/themes/styles';
+import Button from '@/components/shared/Button';
 
 interface ApplicationFormProps {
     formData: any
@@ -9,7 +12,7 @@ interface ApplicationFormProps {
 }
 export default function ApplicationForm({ formData, editable, handleOnChange, handleSubmit }: ApplicationFormProps) {
     return (
-        <View>
+        <View style={styles.container}>
             <TextInput
                 placeholder='Full Name'
                 value={formData.fullName}
@@ -18,6 +21,7 @@ export default function ApplicationForm({ formData, editable, handleOnChange, ha
                 }
                 editable={editable}
             />
+            <Spacing type='sm' />
             <TextInput
                 placeholder='Email'
                 value={formData.email}
@@ -26,6 +30,7 @@ export default function ApplicationForm({ formData, editable, handleOnChange, ha
                 }
                 editable={editable}
             />
+            <Spacing type='sm' />
             <TextInput
                 placeholder='Comments'
                 value={formData.comments}
@@ -33,9 +38,22 @@ export default function ApplicationForm({ formData, editable, handleOnChange, ha
                     (input: string) => { handleOnChange('comments', input) }
                 }
                 editable={editable}
-
+                variant='comment'
+                maxLength={140}
             />
-            <Button title='Submit' onPress={handleSubmit} />
+            <Spacing type='md' />
+            <View style={styles.buttonContainer}>
+                <Button title="Send" onPress={handleSubmit} />
+            </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        margin: spacing.md
+    },
+    buttonContainer: {
+        alignSelf: "center"
+    }
+});

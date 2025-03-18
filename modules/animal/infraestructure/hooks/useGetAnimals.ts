@@ -71,10 +71,11 @@ export const useGetAnimals = () => {
         location,
         animals
       );
-      const sortedAnimals = [...animalsWithDistances].sort(
-        (a, b) => a.distance - b.distance
-      );
-      setAnimalsWithDistance(sortedAnimals);
+      //also intersting to filter by distance, but is itnerfeering with time rescued sorting
+      // const sortedAnimals = [...animalsWithDistances].sort(
+      //   (a, b) => a.distance - b.distance
+      // );
+      setAnimalsWithDistance(animalsWithDistances);
     } else {
       setAnimalsWithDistance([]);
     }
