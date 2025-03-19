@@ -5,11 +5,13 @@ import ApplicationForm from '@/modules/application/presentation/ApplicationForm'
 
 export default function CreateApplicationScreen() {
     const { animalId } = useLocalSearchParams();
-    const { formData, handleOnChange, handleSubmit } = useApplicationForm();
+    const { formData, handleOnChange, handleSubmit, error } = useApplicationForm();
     return (
         <ApplicationForm
             formData={formData}
             handleOnChange={handleOnChange}
-            handleSubmit={() => handleSubmit(animalId as string)} />
+            handleSubmit={() => handleSubmit(animalId as string)}
+            error={error}
+            editable />
     )
 }

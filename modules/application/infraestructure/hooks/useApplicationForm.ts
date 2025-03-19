@@ -20,6 +20,7 @@ export default function useApplicationForm({
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (animalId: string) => {
     const application: Application = {
@@ -34,22 +35,33 @@ export default function useApplicationForm({
       await repository.application.createApplication(application);
       router.replace("/applications");
     } catch (error) {
-      console.error("Failed to create application:", error);
+      setError("Failed to create application. Please try again.");
     } finally {
       setLoading(false);
     }
   };
   const handleUpdate = async (applicationId: string) => {
+    setLoading(true);
     try {
       await repository.application.updateApplication(applicationId, formData);
       router.replace("/applications");
     } catch (error) {
       console.error("Failed to update application:", error);
+      setError("Failed to update application. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
   const handleOnChange = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
-  return { loading, formData, handleSubmit, handleUpdate, handleOnChange };
+  return {
+    loading,
+    formData,
+    handleSubmit,
+    handleUpdate,
+    handleOnChange,
+    error,
+  };
 }
