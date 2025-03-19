@@ -1,21 +1,28 @@
-import React from "react";
-import { View, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { Link } from "expo-router";
 import AnimalThumbnail from "./AnimalThumbnail";
-import { useGetAnimals } from "@/modules/animal/infraestructure/hooks/useGetAnimals";
-import Spacing from "../shared/Spacing";
+import Error from "@/modules/shared/custom/Error";
+import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
+import Loading from "@/modules/shared/custom/Loading";
+import EmptyState from '@/modules/shared/custom/EmptyState';
+import { AnimalWithDistance } from '../domain/entities/Animal';
 
-export default function AnimalList() {
-    const { animals, loading } = useGetAnimals();
+interface AnimalListProps {
+    animals: AnimalWithDistance[];
+    loading: boolean;
+    error: string | null;
+}
+export default function AnimalList({ animals, loading, error }: AnimalListProps) {
 
     if (loading) {
-        return (
-            <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" />
-            </View>
-        );
+        return <Loading />
     }
+
+    if (error) {
+        return <Error message={error} />
+    }
+    if (animals.length === 0) return <EmptyState message='Ops! Empty here. No animals in our database' />
 
     return (
         <View style={styles.container}>
@@ -41,10 +48,5 @@ const styles = StyleSheet.create({
     container: {
         marginHorizontal: spacing.md,
         alignItems: "center"
-    },
-    loadingContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     }
 })

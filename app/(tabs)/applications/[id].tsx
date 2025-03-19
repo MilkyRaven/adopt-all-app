@@ -10,7 +10,7 @@ export default function ApplicationDetails() {
     const item = useLocalSearchParams();
     const [isEditable, setIsEditable] = useState(false);
     const { id, fullName, email, comments } = item;
-    const { formData, handleOnChange, handleUpdate } = useApplicationForm({ fullName, email, comments } as any);
+    const { formData, handleOnChange, handleUpdate, error } = useApplicationForm({ fullName, email, comments } as any);
     const { showDeleteConfirmation } = useDeleteApplication();
 
     const handleDelete = () => {
@@ -24,7 +24,13 @@ export default function ApplicationDetails() {
                 <Button title='Editar' onPress={() => setIsEditable(true)} disabled={isEditable} />
                 <Button title='Borrar' onPress={handleDelete} disabled={isEditable} />
             </View>
-            <ApplicationForm editable={isEditable} formData={formData} handleOnChange={handleOnChange} handleSubmit={() => handleUpdate(id as string)} />
+            <ApplicationForm
+                editable={isEditable}
+                formData={formData}
+                handleOnChange={handleOnChange}
+                handleSubmit={() => handleUpdate(id as string)}
+                error={error}
+            />
         </View>
     )
 }

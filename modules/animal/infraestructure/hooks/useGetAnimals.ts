@@ -17,6 +17,7 @@ export const useGetAnimals = () => {
     AnimalWithDistance[]
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   const { filter } = useAnimalFilter();
   const { location } = useLocation();
 
@@ -32,36 +33,37 @@ export const useGetAnimals = () => {
       }),
     }));
   };
+  const fetchAnimals = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      //TO-DO -> could refactor this query construction?
+      const queryParams: string[] = [];
 
-  useEffect(() => {
-    const fetchAnimals = async () => {
-      try {
-        setLoading(true);
-        const queryParams: string[] = [];
-
-        if (filter.species && filter.species !== "all") {
-          queryParams.push(`species=${filter.species}`);
-        }
-
-        if (filter.age !== null) {
-          queryParams.push(`age=${filter.age}`);
-        }
-
-        queryParams.push(`orderBy=${filter.orderBy}`);
-
-        const queryString = queryParams.join("&");
-
-        const findAnimals = new FindAnimals(repository.application);
-        const result = await findAnimals.execute(queryString);
-
-        setAnimals(result);
-      } catch (err) {
-        setAnimals([]);
-      } finally {
-        setLoading(false);
+      if (filter.species && filter.species !== "all") {
+        queryParams.push(`species=${filter.species}`);
       }
-    };
 
+      if (filter.age !== null) {
+        queryParams.push(`age=${filter.age}`);
+      }
+
+      queryParams.push(`orderBy=${filter.orderBy}`);
+
+      const queryString = queryParams.join("&");
+      const findAnimals = new FindAnimals(repository.application);
+
+      const result = await findAnimals.execute(queryString);
+      setAnimals(result);
+    } catch (err) {
+      setError(
+        "There was an error fetching the animals. Please try again later."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchAnimals();
   }, [filter]);
 
@@ -71,15 +73,16 @@ export const useGetAnimals = () => {
         location,
         animals
       );
-      //also intersting to filter by distance, but is itnerfeering with time rescued sorting
-      // const sortedAnimals = [...animalsWithDistances].sort(
-      //   (a, b) => a.distance - b.distance
-      // );
       setAnimalsWithDistance(animalsWithDistances);
     } else {
       setAnimalsWithDistance([]);
     }
   }, [animals, location]);
 
-  return { animals: animalsWithDistance, loading };
+  return {
+    animals: animalsWithDistance,
+    loading,
+    error,
+    refetch: fetchAnimals,
+  };
 };

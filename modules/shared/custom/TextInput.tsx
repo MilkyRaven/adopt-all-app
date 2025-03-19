@@ -13,6 +13,7 @@ export default function TextInput({ onChangeText, variant = 'default', style, ed
             style={[variant === 'comment' ? styles.commentInput : styles.input, !editable && styles.inactive, style]}
             onChangeText={onChangeText}
             textAlignVertical={variant === 'comment' ? "top" : "center"}
+            editable={editable}
             {...props}
         />
     )

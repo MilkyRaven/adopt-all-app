@@ -2,7 +2,7 @@ import { Pressable, StyleSheet } from 'react-native'
 import React, { ReactNode } from 'react'
 import { Link } from 'expo-router'
 import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles';
-import Text from './Text';
+import Text from '@/modules/shared/custom/Text';
 
 interface ButtonProps {
     title: string;

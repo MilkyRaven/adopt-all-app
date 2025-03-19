@@ -1,16 +1,18 @@
 import { View, StyleSheet } from 'react-native'
-import TextInput from '@/components/shared/TextInput';
-import Spacing from '@/components/shared/Spacing';
+import TextInput from '@/modules/shared/custom/TextInput';
+import Spacing from '@/modules/shared/custom/Spacing';
 import { spacing } from '@/modules/shared/themes/styles';
-import Button from '@/components/shared/Button';
+import Button from '@/modules/shared/custom/Button';
+import Error from '@/modules/shared/custom/Error';
 
 interface ApplicationFormProps {
     formData: any
     handleOnChange: (field: string, value: string) => void;
     handleSubmit: () => void;
     editable?: boolean;
+    error?: string | null;
 }
-export default function ApplicationForm({ formData, editable, handleOnChange, handleSubmit }: ApplicationFormProps) {
+export default function ApplicationForm({ formData, editable, handleOnChange, handleSubmit, error }: ApplicationFormProps) {
     return (
         <View style={styles.container}>
             <TextInput
@@ -42,6 +44,14 @@ export default function ApplicationForm({ formData, editable, handleOnChange, ha
                 maxLength={140}
             />
             <Spacing type='md' />
+            {error && (
+                <>
+                    <View style={styles.errorContainer}>
+                        <Error message={error} />
+                    </View>
+                    <Spacing type='sm' />
+                </>
+            )}
             <View style={styles.buttonContainer}>
                 <Button title="Send" onPress={handleSubmit} />
             </View>
@@ -55,5 +65,10 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         alignSelf: "center"
+    },
+    errorContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });

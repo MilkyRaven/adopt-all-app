@@ -3,7 +3,12 @@ import { ApplicationRepository } from "../domain/repositories/ApplicationReposit
 
 export class FindAllApplicationsByUser {
   constructor(private repository: ApplicationRepository) {}
+
   async execute(userId: string): Promise<Application[]> {
-    return this.repository.findAllApplicationsByUser(userId);
+    try {
+      return this.repository.findAllApplicationsByUser(userId);
+    } catch (error) {
+      throw error;
+    }
   }
 }

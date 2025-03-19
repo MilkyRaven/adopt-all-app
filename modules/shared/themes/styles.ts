@@ -37,3 +37,7 @@ export const h1 = {
   fontWeight: "bold",
   textAlign: "center",
 };
+export const root = {
+  flex: 1,
+  padding: spacing.md,
+};

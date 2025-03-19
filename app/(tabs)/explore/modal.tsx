@@ -1,12 +1,12 @@
 import { View, TouchableOpacity } from 'react-native';
-import Text from '@/components/shared/Text';
+import Text from '@/modules/shared/custom/Text';
 import React, { useState } from 'react';
 import { useAnimalFilter } from '@/modules/animal/presentation/FilterContext';
-import AnimalLabel from '@/components/animals/AnimalLabel';
-import Spacing from '@/components/shared/Spacing';
-import Button from '@/components/shared/Button';
+import AnimalLabel from '@/modules/animal/presentation/AnimalLabel';
+import Spacing from '@/modules/shared/custom/Spacing';
+import Button from '@/modules/shared/custom/Button';
 import { spacing } from '@/modules/shared/themes/styles';
-import LineBreak from '@/components/shared/LineBreak';
+import LineBreak from '@/modules/shared/custom/LineBreak';
 
 const speciesOptions = ["Cat", "Dog", "Rat", "Pig"];
 const ageOptions = ["Junior", "Mid", "Senior"];

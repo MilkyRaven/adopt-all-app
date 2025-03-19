@@ -1,5 +1,5 @@
 import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles'
-import Text from '@/components/shared/Text';
+import Text from '@/modules/shared/custom/Text';
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 interface SettingsItemProps {
     onPress?: () => void,

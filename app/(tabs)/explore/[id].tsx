@@ -1,13 +1,13 @@
 // /app/explore/[id].tsx
 import { View } from "react-native";
-import Text from "@/components/shared/Text";
+import Text from "@/modules/shared/custom/Text";
 import { useRouter } from "expo-router";
 import { useLocalSearchParams } from 'expo-router';
-import AnimalAvatar from "@/components/animals/AnimalAvatar";
+import AnimalAvatar from "@/modules/animal/presentation/AnimalAvatar";
 import { spacing } from "@/modules/shared/themes/styles";
-import Spacing from "@/components/shared/Spacing";
-import AnimalLabel from "@/components/animals/AnimalLabel";
-import Button from "@/components/shared/Button";
+import Spacing from "@/modules/shared/custom/Spacing";
+import AnimalLabel from "@/modules/animal/presentation/AnimalLabel";
+import Button from "@/modules/shared/custom/Button";
 
 const AnimalDetail = () => {
     const router = useRouter();

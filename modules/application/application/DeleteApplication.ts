@@ -3,6 +3,10 @@ import { ApplicationRepository } from "../domain/repositories/ApplicationReposit
 export class DeleteApplication {
   constructor(private repository: ApplicationRepository) {}
   async execute(applicationId: string): Promise<void> {
-    return this.repository.deleteApplication(applicationId);
+    try {
+      return this.repository.deleteApplication(applicationId);
+    } catch (error) {
+      throw error;
+    }
   }
 }

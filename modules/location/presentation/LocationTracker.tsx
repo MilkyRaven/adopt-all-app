@@ -1,19 +1,22 @@
 import { View, StyleSheet } from "react-native";
 import { useLocation } from "@/modules/location/hooks/useLocation";
 import { borderRadius, colors, spacing } from "@/modules/shared/themes/styles";
-import Text from "../shared/Text";
-//TO-DO: should i really be doing this here? i don't think so:
-//may be breaking separation of concerns -> rendering UI and instantiating a service
-//to test this component I will depend on ExpoLocationService
-//to switch providers, I will need to edit this component
+import Text from "@/modules/shared/custom/Text";
+import Error from "@/modules/shared/custom/Error";
+import Loading from "@/modules/shared/custom/Loading";
 
 export default function LocationTracker() {
   const { location, error, loading } = useLocation();
+  if (error) {
+    return (<View style={styles.stateContainer}>
+      <Error message={error} />
+    </View>)
+  }
+  if (loading) {
+    return (<View style={styles.stateContainer}><Loading /></View>)
+  }
   return (
-    //TO-DO: deberé definir con mayor claridad los estilos para los distintos estados del componente
     <View style={styles.container}>
-      {error && <Text>{error}</Text>}
-      {loading && <Text>Loading location...</Text>}
       {location && (
         <View style={styles.locationContainer}>
           <View style={styles.locationRow}>
@@ -27,7 +30,7 @@ export default function LocationTracker() {
     </View>
   );
 }
-//TO-DO: añado un estilo super básisco para tener claras las boundaries del componente
+
 const styles = StyleSheet.create({
   container: {
     padding: spacing.md,
@@ -42,5 +45,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: spacing.sm,
     alignItems: "baseline"
+  },
+  stateContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

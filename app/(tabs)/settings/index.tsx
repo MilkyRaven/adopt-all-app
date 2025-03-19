@@ -1,7 +1,7 @@
 import SettingsItem from '@/modules/settings/presentation/SettingsItem';
 import { View, useColorScheme, TouchableOpacity, Appearance, Button } from 'react-native'
-import Text from '@/components/shared/Text';
-import Spacing from '@/components/shared/Spacing';
+import Text from '@/modules/shared/custom/Text';
+import Spacing from '@/modules/shared/custom/Spacing';
 import { spacing } from '@/modules/shared/themes/styles';
 
 export default function SettingsScreen() {
