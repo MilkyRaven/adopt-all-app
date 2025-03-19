@@ -8,10 +8,12 @@ import Loading from "@/modules/shared/custom/Loading";
 export default function LocationTracker() {
   const { location, error, loading } = useLocation();
   if (error) {
-    return <Error message={error} />
+    return (<View style={styles.stateContainer}>
+      <Error message={error} />
+    </View>)
   }
   if (loading) {
-    return <Loading />
+    return (<View style={styles.stateContainer}><Loading /></View>)
   }
   return (
     <View style={styles.container}>
@@ -43,5 +45,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: spacing.sm,
     alignItems: "baseline"
+  },
+  stateContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
