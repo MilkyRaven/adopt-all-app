@@ -23,9 +23,18 @@ export default function useApplicationForm({
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (animalId: string) => {
+    if (!formData.fullName.trim() || !formData.email.trim()) {
+      setError("Full Name and Email are required.");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setError("Invalid email format.");
+      return;
+    }
     const application: Application = {
       ...formData,
       animalId: animalId as string,
+      //hardcoded just for showing purposes to avoid user authentication
       userId: "5X1x1RbgnCLAoXxBvBOf",
       id: "",
       createdAt: new Date().toISOString(),

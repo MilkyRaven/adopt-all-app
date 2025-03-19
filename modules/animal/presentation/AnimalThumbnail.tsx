@@ -18,10 +18,10 @@ export default function AnimalThumbnail({
     return (
         <View style={styles.animalContainer}>
             <AnimalAvatar image={image} size="thumbnail" />
-            <View>
+            <View style={styles.details}>
                 <Text type="h2">{name}</Text>
                 <Text type="support">{species}</Text>
-                <Text type="support"> {distance} Km from you</Text>
+                <Text type="support">{distance} Km from you</Text>
                 <View style={styles.labelContainer}>
                     <AnimalLabel labelText={neutered ? 'Neutered' : 'Not Neutered'} />
                     <AnimalLabel labelText={age} />
@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
     },
     labelContainer: {
         flexDirection: 'row',
+        gap: spacing.xs
+    },
+    details: {
         gap: spacing.xs
     }
 })

@@ -28,9 +28,9 @@ export const borderRadius = {
 
 export const thumbnailImage = {
   width: 80,
-  height: 80,
+  height: 70,
   borderRadius: borderRadius.md,
-  backgroundColor: "white",
+  padding: spacing.xs,
 };
 export const h1 = {
   fontSize: text.xl,

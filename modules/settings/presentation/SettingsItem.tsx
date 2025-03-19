@@ -1,21 +1,22 @@
 import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles'
 import Text from '@/modules/shared/custom/Text';
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons';
 interface SettingsItemProps {
     onPress?: () => void,
     title: string;
-    icon: string;
-    shouldOpen?: boolean
+    icon: IoniconNames;
 }
-export default function SettingsItem({ title, icon, shouldOpen, onPress }: SettingsItemProps) {
+type IoniconNames = keyof typeof Ionicons.glyphMap;
+
+export default function SettingsItem({ title, icon, onPress }: SettingsItemProps) {
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={styles.container}>
                 <View style={styles.title}>
-                    <Text>{icon}</Text>
+                    <Ionicons name={icon} size={28} color={"black"} />
                     <Text>{title}</Text>
                 </View>
-                {shouldOpen && <Text> ▹</Text>}
             </View>
         </TouchableOpacity>
     )
@@ -23,6 +24,7 @@ export default function SettingsItem({ title, icon, shouldOpen, onPress }: Setti
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
+        alignItems: "center",
         justifyContent: "space-between",
         padding: spacing.md,
         backgroundColor: colors.background,
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     },
     title: {
         flexDirection: "row",
+        alignItems: "center",
         gap: spacing.md
     }
 })

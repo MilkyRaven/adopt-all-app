@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet, ScrollView } from 'react-native';
 import { Link } from "expo-router";
 import AnimalThumbnail from "./AnimalThumbnail";
 import Error from "@/modules/shared/custom/Error";
@@ -27,6 +27,7 @@ export default function AnimalList({ animals, loading, error }: AnimalListProps)
     return (
         <View style={styles.container}>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={animals}
                 renderItem={({ item }) => (
                     <Link
@@ -46,6 +47,7 @@ export default function AnimalList({ animals, loading, error }: AnimalListProps)
 }
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         marginHorizontal: spacing.md,
         alignItems: "center"
     }

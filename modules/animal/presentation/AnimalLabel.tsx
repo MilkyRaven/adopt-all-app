@@ -1,6 +1,8 @@
 import { View, StyleSheet } from 'react-native'
 import Text from '@/modules/shared/custom/Text'
 import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import { useTheme } from '@react-navigation/native'
 
 interface AnimalLabelProps {
     labelText: string
@@ -8,10 +10,11 @@ interface AnimalLabelProps {
 }
 
 export default function AnimalLabel({ labelText, isActive = false }: AnimalLabelProps) {
+    const theme = useTheme();
     return (
         <View style={styles.container}>
             <Text type="p">{labelText}</Text>
-            {isActive && <View style={styles.isActive} />}
+            {isActive && <Ionicons name="checkmark" size={20} color={theme.colors.text} />}
         </View>
     )
 }

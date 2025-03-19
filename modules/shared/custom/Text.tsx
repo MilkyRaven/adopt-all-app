@@ -30,9 +30,11 @@ export default function Text({ children, type = 'p', style }: TextProps) {
 const styles = StyleSheet.create({
     h1: {
         fontSize: text.xl,
+        fontWeight: "600"
     },
     h2: {
         fontSize: text.lg,
+        fontWeight: "500"
     },
     h3: {
         fontSize: text.md,
@@ -41,9 +43,10 @@ const styles = StyleSheet.create({
         fontSize: text.sm
     },
     support: {
-        fontSize: text.xs
+        fontSize: text.xs,
     },
     caption: {
-        fontSize: text.xxs
+        fontSize: text.xxs,
+        fontWeight: '300',
     }
 })

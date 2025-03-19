@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import Text from './Text';
 import { borderRadius, colors, spacing, thumbnailImage } from '@/modules/shared/themes/styles';
 
@@ -9,9 +9,8 @@ interface BannerProps {
 export default function Banner({ title, description }: BannerProps) {
     return (
         <View style={styles.container}>
-            <View style={styles.image}>
-            </View>
-            <View>
+            <Image source={require('@/assets/images/logo.png')} style={styles.image} />
+            <View style={styles.textContainer}>
                 <Text type="h1">{title}</Text>
                 <Text type='p' >{description}</Text>
             </View>
@@ -23,12 +22,15 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
-        gap: spacing.md,
+        gap: spacing.lg,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colors.background,
         borderRadius: borderRadius.md,
         padding: spacing.md,
+    },
+    textContainer: {
+        alignItems: "center",
     },
     image: thumbnailImage
 });

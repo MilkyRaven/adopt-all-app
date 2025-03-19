@@ -28,6 +28,8 @@ export class ApplicationRepositoryHttp implements ApplicationRepository {
     );
   }
   async deleteApplication(id: string): Promise<void> {
-    await this.httpClient.delete(`${process.env.EXPO_PUBLIC_API_URL}/${id}`);
+    await this.httpClient.delete(
+      `${process.env.EXPO_PUBLIC_API_URL}/applications/${id}`
+    );
   }
 }

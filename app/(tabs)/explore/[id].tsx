@@ -1,5 +1,5 @@
 // /app/explore/[id].tsx
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Text from "@/modules/shared/custom/Text";
 import { useRouter } from "expo-router";
 import { useLocalSearchParams } from 'expo-router';
@@ -9,11 +9,11 @@ import Spacing from "@/modules/shared/custom/Spacing";
 import AnimalLabel from "@/modules/animal/presentation/AnimalLabel";
 import Button from "@/modules/shared/custom/Button";
 
-const AnimalDetail = () => {
+export default function AnimalDetail() {
     const router = useRouter();
     const animalDetails = useLocalSearchParams();
     return (
-        <View style={{ margin: spacing.md }}>
+        <View style={styles.container}>
             <View style={{ flexDirection: 'row', gap: spacing.md, alignItems: "flex-end" }}>
                 <AnimalAvatar image={animalDetails.image as string} size="fullProfile" />
                 <View>
@@ -44,6 +44,7 @@ const AnimalDetail = () => {
         </View>
     );
 };
-
-export default AnimalDetail;
+const styles = StyleSheet.create({
+    container: { margin: spacing.lg }
+})
 

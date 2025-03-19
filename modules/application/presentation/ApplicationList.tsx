@@ -22,6 +22,7 @@ export default function ApplicationList({ applications, loading, error }: Applic
     return (
         <View style={styles.container}>
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={applications}
                 renderItem={({ item }) => (
                     <Link href={{
@@ -40,6 +41,7 @@ export default function ApplicationList({ applications, loading, error }: Applic
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         margin: spacing.md
     }
 });
