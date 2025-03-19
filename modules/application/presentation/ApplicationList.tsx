@@ -7,11 +7,13 @@ import { spacing } from '@/modules/shared/themes/styles'
 import Spacing from '@/modules/shared/custom/Spacing'
 import Loading from '@/modules/shared/custom/Loading'
 import Error from '@/modules/shared/custom/Error'
+import EmptyState from '@/modules/shared/custom/EmptyState'
 
 export default function ApplicationList() {
     const { applications, loading, error } = useGetApplications();
     if (loading) return <Loading />
     if (error) return <Error message={error} />
+    if (applications.length === 0) return <EmptyState message="Ops! You haven't created any adoption applications" />
     return (
         <View style={styles.container}>
             <FlatList

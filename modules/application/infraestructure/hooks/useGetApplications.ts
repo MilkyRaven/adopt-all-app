@@ -13,7 +13,7 @@ export default function getApplications() {
       const response = await repository.application.findAllApplicationsByUser(
         "5X1x1RbgnCLAoXxBvBOf" //TO-DO: delete hardcoded id
       );
-      //setApplications(response);
+      setApplications(response);
     } catch (error) {
       setError("Error fetching applications. Try again later");
     } finally {
