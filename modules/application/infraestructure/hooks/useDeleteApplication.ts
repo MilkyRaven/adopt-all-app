@@ -15,7 +15,6 @@ export default function useDeleteApplication(): UseDeleteApplicationReturn {
     try {
       await repository.application.deleteApplication(id);
     } catch (error) {
-      console.error("Error deleting application:", error);
       Alert.alert(
         "Error",
         "Failed to delete the application. Please try again later.",

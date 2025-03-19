@@ -46,7 +46,6 @@ export default function useApplicationForm({
       await repository.application.updateApplication(applicationId, formData);
       router.replace("/applications");
     } catch (error) {
-      console.error("Failed to update application:", error);
       setError("Failed to update application. Please try again.");
     } finally {
       setLoading(false);
