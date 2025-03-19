@@ -7,9 +7,12 @@ interface ApplicationThumbnail {
     application: Application
 }
 export default function ApplicationThumbnail({ application }: ApplicationThumbnail) {
+    const date = new Date(application.createdAt)
+    const humanReadableDate = date.toLocaleDateString()
+
     return (
         <View style={styles.container}>
-            <Text>{application.createdAt}</Text>
+            <Text>{humanReadableDate}</Text>
             <Text>Reviewing Application</Text>
         </View>
     )
