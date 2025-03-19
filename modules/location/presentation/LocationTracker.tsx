@@ -4,10 +4,6 @@ import { borderRadius, colors, spacing } from "@/modules/shared/themes/styles";
 import Text from "@/modules/shared/custom/Text";
 import Error from "@/modules/shared/custom/Error";
 import Loading from "@/modules/shared/custom/Loading";
-//TO-DO: should i really be doing this here? i don't think so:
-//may be breaking separation of concerns -> rendering UI and instantiating a service
-//to test this component I will depend on ExpoLocationService
-//to switch providers, I will need to edit this component
 
 export default function LocationTracker() {
   const { location, error, loading } = useLocation();
