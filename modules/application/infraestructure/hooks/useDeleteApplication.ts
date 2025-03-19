@@ -16,6 +16,11 @@ export default function useDeleteApplication(): UseDeleteApplicationReturn {
       await repository.application.deleteApplication(id);
     } catch (error) {
       console.error("Error deleting application:", error);
+      Alert.alert(
+        "Error",
+        "Failed to delete the application. Please try again later.",
+        [{ text: "OK" }]
+      );
       throw error;
     } finally {
       setLoading(false);
@@ -39,7 +44,13 @@ export default function useDeleteApplication(): UseDeleteApplicationReturn {
               if (onSuccess) {
                 onSuccess();
               }
-            } catch (error) {}
+            } catch (error) {
+              Alert.alert(
+                "Error",
+                "An error occurred while deleting the application.",
+                [{ text: "OK" }]
+              );
+            }
           },
         },
       ]
