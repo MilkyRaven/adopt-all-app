@@ -13,7 +13,6 @@ export default function Explore() {
   const { refetch, animals, loading, error } = useGetAnimals();
   useFocusEffect(
     useCallback(() => {
-      console.log("hola")
       refetch();
     }, [])
   )

@@ -9,8 +9,6 @@ interface ApplicationThumbnail {
 export default function ApplicationThumbnail({ application }: ApplicationThumbnail) {
     return (
         <View style={styles.container}>
-            {/* <AnimalAvatar size="thumbnail" image="" /> */}
-            <Text>{application.animalId}</Text>
             <Text>{application.createdAt}</Text>
             <Text>Reviewing Application</Text>
         </View>
