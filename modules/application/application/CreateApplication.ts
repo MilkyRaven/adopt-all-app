@@ -4,6 +4,10 @@ import { ApplicationRepository } from "../domain/repositories/ApplicationReposit
 export class CreateApplication {
   constructor(private repository: ApplicationRepository) {}
   async execute(application: Application): Promise<string> {
-    return this.repository.createApplication(application);
+    try {
+      return this.repository.createApplication(application);
+    } catch (error) {
+      throw error;
+    }
   }
 }

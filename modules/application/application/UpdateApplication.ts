@@ -7,6 +7,10 @@ export class UpdateApplication {
     applicationId: string,
     applicationData: Partial<Application>
   ): Promise<void> {
-    return this.repository.updateApplication(applicationId, applicationData);
+    try {
+      return this.repository.updateApplication(applicationId, applicationData);
+    } catch (error) {
+      throw error;
+    }
   }
 }
