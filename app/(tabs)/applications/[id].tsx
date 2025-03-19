@@ -5,8 +5,10 @@ import useApplicationForm from '@/modules/application/infraestructure/hooks/useA
 import ApplicationForm from '@/modules/application/presentation/ApplicationForm';
 import { useState } from 'react';
 import { spacing } from '@/modules/shared/themes/styles';
+import { useTheme } from '@react-navigation/native';
 
 export default function ApplicationDetails() {
+    const theme = useTheme()
     const item = useLocalSearchParams();
     const [isEditable, setIsEditable] = useState(false);
     const { id, fullName, email, comments } = item;
@@ -21,8 +23,8 @@ export default function ApplicationDetails() {
     return (
         <View style={{ padding: spacing.md }}>
             <View style={{ flexDirection: "row-reverse", gap: spacing.sm }}>
-                <Button title='Editar' onPress={() => setIsEditable(true)} disabled={isEditable} />
-                <Button title='Borrar' onPress={handleDelete} disabled={isEditable} />
+                <Button color={theme.colors.primary} title='Editar' onPress={() => setIsEditable(true)} disabled={isEditable} />
+                <Button color={theme.colors.primary} title='Borrar' onPress={handleDelete} disabled={isEditable} />
             </View>
             <ApplicationForm
                 editable={isEditable}

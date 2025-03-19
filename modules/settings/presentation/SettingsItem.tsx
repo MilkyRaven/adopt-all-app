@@ -2,6 +2,7 @@ import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles'
 import Text from '@/modules/shared/custom/Text';
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useTheme } from '@react-navigation/native';
 interface SettingsItemProps {
     onPress?: () => void,
     title: string;
@@ -10,11 +11,12 @@ interface SettingsItemProps {
 type IoniconNames = keyof typeof Ionicons.glyphMap;
 
 export default function SettingsItem({ title, icon, onPress }: SettingsItemProps) {
+    const theme = useTheme();
     return (
         <TouchableOpacity onPress={onPress}>
-            <View style={styles.container}>
+            <View style={[styles.container, { backgroundColor: theme.colors.card }]}>
                 <View style={styles.title}>
-                    <Ionicons name={icon} size={28} color={"black"} />
+                    <Ionicons name={icon} size={28} color={theme.colors.primary} />
                     <Text>{title}</Text>
                 </View>
             </View>
@@ -27,7 +29,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         padding: spacing.md,
-        backgroundColor: colors.background,
         borderRadius: borderRadius.md,
     },
     title: {

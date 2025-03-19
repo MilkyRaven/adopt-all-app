@@ -27,9 +27,10 @@ export default function SettingsScreen() {
             <SettingsItem title='Log out' icon='log-out' />
             <Spacing type='xl' />
             <View style={{ alignItems: "center" }}>
-                <Text type='h1'>Adopt All</Text>
+                <Text type='h1'>Adopt All 🐷</Text>
                 <Spacing type='md' />
                 <Text type='support'>Version 1.0.0</Text>
+                <Text type='support'>Built with 💖 by Milky</Text>
                 <Spacing type='sm' />
                 <Text type='support'>Terms and Privacy</Text>
             </View>

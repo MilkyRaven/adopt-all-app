@@ -1,5 +1,6 @@
 import { Text as NativeText, StyleSheet, TextStyle } from 'react-native'
 import { text } from '@/modules/shared/themes/styles'
+import { useTheme } from '@react-navigation/native'
 
 type TextType = 'h1' | 'h2' | 'h3' | 'p' | 'support' | 'caption'
 
@@ -10,6 +11,8 @@ interface TextProps {
 }
 
 export default function Text({ children, type = 'p', style }: TextProps) {
+    const theme = useTheme();
+
     const textStyle = [
         type === 'h1' && styles.h1,
         type === 'h2' && styles.h2,
@@ -17,6 +20,7 @@ export default function Text({ children, type = 'p', style }: TextProps) {
         type === 'p' && styles.p,
         type === 'support' && styles.support,
         type === 'caption' && styles.caption,
+        { color: theme.colors.text }, // Apply theme text color
         style
     ]
 
@@ -30,7 +34,7 @@ export default function Text({ children, type = 'p', style }: TextProps) {
 const styles = StyleSheet.create({
     h1: {
         fontSize: text.xl,
-        fontWeight: "600"
+        fontWeight: "600",
     },
     h2: {
         fontSize: text.lg,

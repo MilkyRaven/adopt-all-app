@@ -1,14 +1,16 @@
 import { View, StyleSheet, Image } from 'react-native';
 import Text from './Text';
-import { borderRadius, colors, spacing, thumbnailImage } from '@/modules/shared/themes/styles';
+import { borderRadius, spacing, thumbnailImage } from '@/modules/shared/themes/styles';
+import { useTheme } from '@react-navigation/native';
 
 interface BannerProps {
     title: string;
     description: string;
 }
 export default function Banner({ title, description }: BannerProps) {
+    const theme = useTheme();
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.colors.card }]}>
             <Image source={require('@/assets/images/logo.png')} style={styles.image} />
             <View style={styles.textContainer}>
                 <Text type="h1">{title}</Text>
@@ -25,7 +27,6 @@ const styles = StyleSheet.create({
         gap: spacing.lg,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.background,
         borderRadius: borderRadius.md,
         padding: spacing.md,
     },

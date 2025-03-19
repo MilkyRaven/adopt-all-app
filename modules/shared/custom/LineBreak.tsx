@@ -1,9 +1,11 @@
-import { colors, spacing } from '@/modules/shared/themes/styles'
+import { spacing } from '@/modules/shared/themes/styles'
+import { useTheme } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native'
 
 export default function LineBreak() {
+    const theme = useTheme();
     return (
-        <View style={styles.lineBreak}>
+        <View style={[styles.lineBreak, { backgroundColor: theme.colors.border }]}>
         </View>
     )
 }
@@ -11,7 +13,6 @@ export default function LineBreak() {
 const styles = StyleSheet.create({
     lineBreak: {
         height: 1,
-        backgroundColor: colors.background,
         marginVertical: spacing.sm
     }
 });

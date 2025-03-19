@@ -1,4 +1,5 @@
 import { borderRadius, colors, spacing, text } from '@/modules/shared/themes/styles'
+import { useTheme } from '@react-navigation/native'
 import { TextInput as NativeTextInput, StyleSheet, TextInputProps as NativeTextInputProps } from 'react-native'
 
 interface TextInputProps extends NativeTextInputProps {
@@ -7,10 +8,11 @@ interface TextInputProps extends NativeTextInputProps {
 }
 
 export default function TextInput({ onChangeText, variant = 'default', style, editable, ...props }: TextInputProps) {
+    const theme = useTheme()
     return (
         <NativeTextInput
             multiline
-            style={[variant === 'comment' ? styles.commentInput : styles.input, !editable && styles.inactive, style]}
+            style={[variant === 'comment' ? styles.commentInput : styles.input, !editable && styles.inactive, { backgroundColor: theme.colors.card, color: theme.colors.text }, style]}
             onChangeText={onChangeText}
             textAlignVertical={variant === 'comment' ? "top" : "center"}
             editable={editable}
@@ -27,7 +29,6 @@ const styles = StyleSheet.create({
         fontSize: text.sm
     }, inactive: {
         borderWidth: 1,
-        borderColor: colors.background
     },
     commentInput: {
         height: 120,

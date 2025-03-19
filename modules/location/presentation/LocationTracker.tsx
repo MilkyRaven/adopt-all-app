@@ -19,7 +19,7 @@ export default function LocationTracker() {
     return (<View style={styles.stateContainer}><Loading /></View>)
   }
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.colors.card }]}>
       {location && (
         <View style={styles.locationContainer}>
           {location.place && (
@@ -45,7 +45,6 @@ export default function LocationTracker() {
 const styles = StyleSheet.create({
   container: {
     padding: spacing.md,
-    backgroundColor: colors.background,
     borderRadius: borderRadius.md,
   },
   locationContainer: {
