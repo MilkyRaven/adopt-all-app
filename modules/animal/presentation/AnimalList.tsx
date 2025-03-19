@@ -6,6 +6,7 @@ import { useGetAnimals } from "@/modules/animal/infraestructure/hooks/useGetAnim
 import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
 import Loading from "@/modules/shared/custom/Loading";
+import EmptyState from '@/modules/shared/custom/EmptyState';
 
 export default function AnimalList() {
     const { animals, loading, error } = useGetAnimals();
@@ -17,6 +18,7 @@ export default function AnimalList() {
     if (error) {
         return <Error message={error} />
     }
+    if (animals.length === 0) return <EmptyState message='Ops! Empty here. No animals in our database' />
 
     return (
         <View style={styles.container}>
