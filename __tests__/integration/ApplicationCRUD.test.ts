@@ -48,14 +48,13 @@ describe("Adoption Application CRUD Integration", () => {
 
   beforeAll(async () => {
     try {
-      await axios.get("http://localhost:4000/health", { timeout: 2000 });
+      await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/health`, {
+        timeout: 2000,
+      });
       apiAvailable = true;
     } catch (error) {
       apiAvailable = false;
-      errorLog(
-        "API is not available. Make sure the backend is running at http://localhost:4000",
-        error
-      );
+      errorLog("API is not available", error);
     }
   });
 

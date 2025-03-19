@@ -8,8 +8,8 @@ export class AnimalRepositoryHttp implements AnimalRepository {
   async findAnimals(query?: string): Promise<Animal[]> {
     try {
       const url = query
-        ? `http://localhost:4000/animals?${query}`
-        : `http://localhost:4000/animals`;
+        ? `${process.env.EXPO_PUBLIC_API_URL}/animals?${query}`
+        : `${process.env.EXPO_PUBLIC_API_URL}/animals`;
 
       const response = await this.httpClient.get(url);
       return response;

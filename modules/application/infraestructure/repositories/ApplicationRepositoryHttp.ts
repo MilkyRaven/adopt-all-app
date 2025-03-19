@@ -7,13 +7,13 @@ export class ApplicationRepositoryHttp implements ApplicationRepository {
 
   async findAllApplicationsByUser(userId: string): Promise<Application[]> {
     const response = await this.httpClient.get(
-      `http://localhost:4000/applications/${userId}`
+      `${process.env.EXPO_PUBLIC_API_URL}/applications/${userId}`
     );
     return response;
   }
   async createApplication(application: Application): Promise<string> {
     const response = await this.httpClient.post(
-      `http://localhost:4000/applications`,
+      `${process.env.EXPO_PUBLIC_API_URL}/applications`,
       application
     );
     return response;
@@ -22,9 +22,12 @@ export class ApplicationRepositoryHttp implements ApplicationRepository {
     id: string,
     data: Partial<Application>
   ): Promise<void> {
-    await this.httpClient.put(`http://localhost:4000/applications/${id}`, data);
+    await this.httpClient.put(
+      `${process.env.EXPO_PUBLIC_API_URL}/applications/${id}`,
+      data
+    );
   }
   async deleteApplication(id: string): Promise<void> {
-    await this.httpClient.delete(`http://localhost:4000/applications/${id}`);
+    await this.httpClient.delete(`${process.env.EXPO_PUBLIC_API_URL}/${id}`);
   }
 }
