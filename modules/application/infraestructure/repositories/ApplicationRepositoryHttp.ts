@@ -7,13 +7,13 @@ export class ApplicationRepositoryHttp implements ApplicationRepository {
 
   async findAllApplicationsByUser(userId: string): Promise<Application[]> {
     const response = await this.httpClient.get(
-      `${process.env.EXPO_PUBLIC_API_URL}/applications/${userId}`
+      `https://adopt-all-backend-production.up.railway.app/applications/${userId}`
     );
     return response;
   }
   async createApplication(application: Application): Promise<string> {
     const response = await this.httpClient.post(
-      `${process.env.EXPO_PUBLIC_API_URL}/applications`,
+      "https://adopt-all-backend-production.up.railway.app/applications",
       application
     );
     return response;
@@ -23,13 +23,13 @@ export class ApplicationRepositoryHttp implements ApplicationRepository {
     data: Partial<Application>
   ): Promise<void> {
     await this.httpClient.put(
-      `${process.env.EXPO_PUBLIC_API_URL}/applications/${id}`,
+      `https://adopt-all-backend-production.up.railway.app/applications/${id}`,
       data
     );
   }
   async deleteApplication(id: string): Promise<void> {
     await this.httpClient.delete(
-      `${process.env.EXPO_PUBLIC_API_URL}/applications/${id}`
+      `https://adopt-all-backend-production.up.railway.app/applications/${id}`
     );
   }
 }

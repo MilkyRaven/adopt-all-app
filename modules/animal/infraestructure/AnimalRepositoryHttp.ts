@@ -8,8 +8,8 @@ export class AnimalRepositoryHttp implements AnimalRepository {
   async findAnimals(query?: string): Promise<Animal[]> {
     try {
       const url = query
-        ? `${process.env.EXPO_PUBLIC_API_URL}/animals?${query}`
-        : `${process.env.EXPO_PUBLIC_API_URL}/animals`;
+        ? `https://adopt-all-backend-production.up.railway.app/animals?${query}`
+        : "https://adopt-all-backend-production.up.railway.app/animals";
 
       const response = await this.httpClient.get(url);
       return response;

@@ -48,9 +48,12 @@ describe("Adoption Application CRUD Integration", () => {
 
   beforeAll(async () => {
     try {
-      await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/health`, {
-        timeout: 2000,
-      });
+      await axios.get(
+        `https://adopt-all-backend-production.up.railway.app/health`,
+        {
+          timeout: 2000,
+        }
+      );
       apiAvailable = true;
     } catch (error) {
       apiAvailable = false;
