@@ -1,20 +1,21 @@
-import React from "react";
-import { View, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { Link } from "expo-router";
 import AnimalThumbnail from "./AnimalThumbnail";
+import Error from "@/modules/shared/custom/Error";
 import { useGetAnimals } from "@/modules/animal/infraestructure/hooks/useGetAnimals";
 import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
+import Loading from "@/modules/shared/custom/Loading";
 
 export default function AnimalList() {
-    const { animals, loading } = useGetAnimals();
+    const { animals, loading, error } = useGetAnimals();
 
     if (loading) {
-        return (
-            <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" />
-            </View>
-        );
+        return <Loading />
+    }
+
+    if (error) {
+        return <Error error={error} />
     }
 
     return (
@@ -41,10 +42,5 @@ const styles = StyleSheet.create({
     container: {
         marginHorizontal: spacing.md,
         alignItems: "center"
-    },
-    loadingContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     }
 })
