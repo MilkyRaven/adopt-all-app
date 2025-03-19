@@ -5,9 +5,13 @@ import { Link } from 'expo-router'
 import useGetApplications from '../infraestructure/hooks/useGetApplications'
 import { spacing } from '@/modules/shared/themes/styles'
 import Spacing from '@/modules/shared/custom/Spacing'
+import Loading from '@/modules/shared/custom/Loading'
+import Error from '@/modules/shared/custom/Error'
 
 export default function ApplicationList() {
-    const applications = useGetApplications();
+    const { applications, loading, error } = useGetApplications();
+    if (loading) return <Loading />
+    if (error) return <Error message={error} />
     return (
         <View style={styles.container}>
             <FlatList

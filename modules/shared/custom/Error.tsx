@@ -4,12 +4,12 @@ import Text from './Text'
 import { spacing } from '../themes/styles'
 
 interface ErrorProps {
-    error: string
+    message: string
 }
-export default function Error({ error }: ErrorProps) {
+export default function Error({ message }: ErrorProps) {
     return (
         <View style={styles.errorContainer}>
-            <Text style={styles.errorText}>{error}</Text>
+            <Text style={styles.errorText}>{message}</Text>
         </View>
     )
 }

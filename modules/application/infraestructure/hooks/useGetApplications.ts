@@ -4,16 +4,25 @@ import { repository } from "../repositories";
 
 export default function getApplications() {
   const [applications, setApplications] = useState<Application[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function fetchApplications() {
-    const response = await repository.application.findAllApplicationsByUser(
-      "5X1x1RbgnCLAoXxBvBOf"
-    );
-    setApplications(response);
+    setLoading(true);
+    try {
+      const response = await repository.application.findAllApplicationsByUser(
+        "5X1x1RbgnCLAoXxBvBOf" //TO-DO: delete hardcoded id
+      );
+      setApplications(response);
+    } catch (error) {
+      setError("Error fetching applications. Try again later");
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
     fetchApplications();
   }, []);
-  return applications;
+  return { applications, loading, error };
 }

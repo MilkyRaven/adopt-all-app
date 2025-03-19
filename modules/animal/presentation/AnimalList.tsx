@@ -15,7 +15,7 @@ export default function AnimalList() {
     }
 
     if (error) {
-        return <Error error={error} />
+        return <Error message={error} />
     }
 
     return (
