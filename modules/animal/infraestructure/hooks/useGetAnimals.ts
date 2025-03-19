@@ -33,39 +33,37 @@ export const useGetAnimals = () => {
       }),
     }));
   };
+  const fetchAnimals = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      //TO-DO -> could refactor this query construction?
+      const queryParams: string[] = [];
 
-  useEffect(() => {
-    const fetchAnimals = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        //TO-DO -> could refactor this query construction?
-        const queryParams: string[] = [];
-
-        if (filter.species && filter.species !== "all") {
-          queryParams.push(`species=${filter.species}`);
-        }
-
-        if (filter.age !== null) {
-          queryParams.push(`age=${filter.age}`);
-        }
-
-        queryParams.push(`orderBy=${filter.orderBy}`);
-
-        const queryString = queryParams.join("&");
-        const findAnimals = new FindAnimals(repository.application);
-
-        const result = await findAnimals.execute(queryString);
-        setAnimals(result);
-      } catch (err) {
-        setError(
-          "There was an error fetching the animals. Please try again later."
-        );
-      } finally {
-        setLoading(false);
+      if (filter.species && filter.species !== "all") {
+        queryParams.push(`species=${filter.species}`);
       }
-    };
 
+      if (filter.age !== null) {
+        queryParams.push(`age=${filter.age}`);
+      }
+
+      queryParams.push(`orderBy=${filter.orderBy}`);
+
+      const queryString = queryParams.join("&");
+      const findAnimals = new FindAnimals(repository.application);
+
+      const result = await findAnimals.execute(queryString);
+      setAnimals(result);
+    } catch (err) {
+      setError(
+        "There was an error fetching the animals. Please try again later."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchAnimals();
   }, [filter]);
 
@@ -81,5 +79,10 @@ export const useGetAnimals = () => {
     }
   }, [animals, location]);
 
-  return { animals: animalsWithDistance, loading, error };
+  return {
+    animals: animalsWithDistance,
+    loading,
+    error,
+    refetch: fetchAnimals,
+  };
 };

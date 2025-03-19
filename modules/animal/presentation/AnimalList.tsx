@@ -2,14 +2,18 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import { Link } from "expo-router";
 import AnimalThumbnail from "./AnimalThumbnail";
 import Error from "@/modules/shared/custom/Error";
-import { useGetAnimals } from "@/modules/animal/infraestructure/hooks/useGetAnimals";
 import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
 import Loading from "@/modules/shared/custom/Loading";
 import EmptyState from '@/modules/shared/custom/EmptyState';
+import { AnimalWithDistance } from '../domain/entities/Animal';
 
-export default function AnimalList() {
-    const { animals, loading, error } = useGetAnimals();
+interface AnimalListProps {
+    animals: AnimalWithDistance[];
+    loading: boolean;
+    error: string | null;
+}
+export default function AnimalList({ animals, loading, error }: AnimalListProps) {
 
     if (loading) {
         return <Loading />
