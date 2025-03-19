@@ -2,16 +2,36 @@ import axios from "axios";
 import { Http } from "../domain/Http";
 
 export class AxiosRepository implements Http {
-  get(url: string): Promise<any> {
-    return axios.get(url).then((response) => response.data);
+  async get(url: string): Promise<any> {
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
-  post(url: string, data: any): Promise<any> {
-    return axios.post(url, data).then((response) => response.data);
+  async post(url: string, data: any): Promise<any> {
+    try {
+      const response = await axios.post(url, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
-  put(url: string, data: any): Promise<any> {
-    return axios.put(url, data).then((response) => response.data);
+  async put(url: string, data: any): Promise<any> {
+    try {
+      const response = await axios.put(url, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
-  delete(url: string): Promise<any> {
-    return axios.delete(url).then((response) => response.data);
+  async delete(url: string): Promise<any> {
+    try {
+      const response = await axios.delete(url);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 }
