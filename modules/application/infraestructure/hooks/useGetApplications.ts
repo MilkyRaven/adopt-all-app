@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Application } from "../../domain/entities/Application";
 import { repository } from "../repositories";
 
-export default function getApplications() {
+export default function useGetApplications() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -24,5 +24,6 @@ export default function getApplications() {
   useEffect(() => {
     fetchApplications();
   }, []);
-  return { applications, loading, error };
+
+  return { applications, loading, error, refetch: fetchApplications };
 }

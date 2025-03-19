@@ -8,9 +8,14 @@ import Spacing from '@/modules/shared/custom/Spacing'
 import Loading from '@/modules/shared/custom/Loading'
 import Error from '@/modules/shared/custom/Error'
 import EmptyState from '@/modules/shared/custom/EmptyState'
+import { Application } from '../domain/entities/Application'
 
-export default function ApplicationList() {
-    const { applications, loading, error } = useGetApplications();
+interface ApplicationListProps {
+    applications: Application[]
+    loading: boolean
+    error: string | null
+}
+export default function ApplicationList({ applications, loading, error }: ApplicationListProps) {
     if (loading) return <Loading />
     if (error) return <Error message={error} />
     if (applications.length === 0) return <EmptyState message="Ops! You haven't created any adoption applications" />
