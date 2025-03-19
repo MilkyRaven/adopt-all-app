@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import { useLocation } from "@/modules/location/hooks/useLocation";
 import { borderRadius, colors, spacing } from "@/modules/shared/themes/styles";
-import Text from "../shared/Text";
+import Text from "@/modules/shared/custom/Text";
 //TO-DO: should i really be doing this here? i don't think so:
 //may be breaking separation of concerns -> rendering UI and instantiating a service
 //to test this component I will depend on ExpoLocationService

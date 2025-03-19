@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native'
-import TextInput from '@/components/shared/TextInput';
-import Spacing from '@/components/shared/Spacing';
+import TextInput from '@/modules/shared/custom/TextInput';
+import Spacing from '@/modules/shared/custom/Spacing';
 import { spacing } from '@/modules/shared/themes/styles';
-import Button from '@/components/shared/Button';
+import Button from '@/modules/shared/custom/Button';
 
 interface ApplicationFormProps {
     formData: any

@@ -1,15 +1,19 @@
 import { View, StyleSheet } from 'react-native';
-import Text from './shared/Text';
+import Text from './Text';
 import { borderRadius, colors, spacing, thumbnailImage } from '@/modules/shared/themes/styles';
 
-export default function WelcomeBanner() {
+interface BannerProps {
+    title: string;
+    description: string;
+}
+export default function Banner({ title, description }: BannerProps) {
     return (
         <View style={styles.container}>
             <View style={styles.image}>
             </View>
             <View>
-                <Text type="h1">Welcome to Adopt All</Text>
-                <Text type='p' >A place to help animals in need</Text>
+                <Text type="h1">{title}</Text>
+                <Text type='p' >{description}</Text>
             </View>
         </View>
     );

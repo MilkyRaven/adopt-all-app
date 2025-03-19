@@ -3,7 +3,7 @@ import { View, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
 import { Link } from "expo-router";
 import AnimalThumbnail from "./AnimalThumbnail";
 import { useGetAnimals } from "@/modules/animal/infraestructure/hooks/useGetAnimals";
-import Spacing from "../shared/Spacing";
+import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
 
 export default function AnimalList() {

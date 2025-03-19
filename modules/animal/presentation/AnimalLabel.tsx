@@ -1,5 +1,5 @@
 import { View, StyleSheet } from 'react-native'
-import Text from '../shared/Text'
+import Text from '@/modules/shared/custom/Text'
 import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles'
 
 interface AnimalLabelProps {

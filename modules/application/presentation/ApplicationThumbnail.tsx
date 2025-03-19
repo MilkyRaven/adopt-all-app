@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native'
 import { Application } from '@/modules/application/domain/entities/Application'
 import { borderRadius, colors, spacing } from '@/modules/shared/themes/styles'
-import Text from '@/components/shared/Text'
+import Text from '@/modules/shared/custom/Text'
 
 interface ApplicationThumbnail {
     application: Application

@@ -1,16 +1,16 @@
 import { View, StyleSheet } from "react-native";
-import LocationTracker from '@/components/location/LocationTracker';
-import AnimalList from "@/components/animals/AnimalList";
-import WelcomeBanner from "@/components/WelcomeBanner";
-import AnimalFilter from "@/components/animals/AnimalFilter";
+import LocationTracker from "@/modules/location/presentation/LocationTracker";
+import AnimalList from "@/modules/animal/presentation/AnimalList";
+import Banner from "@/modules/shared/custom/Banner";
+import AnimalFilter from "@/modules/animal/presentation/AnimalFilter";
 import { Link } from "expo-router";
-import Spacing from "@/components/shared/Spacing";
+import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
 
 export default function Explore() {
   return (
     <View style={styles.container}>
-      <WelcomeBanner />
+      <Banner title="Welcome to Adopt All" description="A place to find animals in need" />
       <Spacing />
       <LocationTracker />
       <Spacing />

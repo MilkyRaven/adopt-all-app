@@ -4,7 +4,7 @@ import ApplicationThumbnail from './ApplicationThumbnail'
 import { Link } from 'expo-router'
 import useGetApplications from '../infraestructure/hooks/useGetApplications'
 import { spacing } from '@/modules/shared/themes/styles'
-import Spacing from '@/components/shared/Spacing'
+import Spacing from '@/modules/shared/custom/Spacing'
 
 export default function ApplicationList() {
     const applications = useGetApplications();

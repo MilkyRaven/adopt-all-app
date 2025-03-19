@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import Text from "../shared/Text";
+import Text from "@/modules/shared/custom/Text";
 import AnimalAvatar from "./AnimalAvatar";
 import { AnimalWithDistance } from "@/modules/animal/domain/entities/Animal";
 import AnimalLabel from "./AnimalLabel";
