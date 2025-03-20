@@ -10,11 +10,11 @@ Okay, now let's go with an overview of the app's features!
 
 ## Features
 
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Animal Browsing</span>: View a list of animals available for adoption. When you click on an animal, you can see more details including a description and a button to submit an adoption application.
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Location-Based Search</span>: Find animals near your current location with distance calculation. The app calculates your coordinates and displays the distance to each animal in the list.
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Filtering</span>: Filter animals by various criteria to find a perfect buddy.
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Adoption Applications</span>: Submit and manage your adoption applications
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Dark/Light Mode</span>: Toggle between dark and light themes for comfortable viewing
+- **Animal Browsing**: View a list of animals available for adoption. When you click on an animal, you can see more details including a description and a button to submit an adoption application.
+- **Location-Based Search**: Find animals near your current location with distance calculation. The app calculates your coordinates and displays the distance to each animal in the list.
+- **Filtering**: Filter animals by various criteria to find a perfect buddy.
+- **Adoption Applications**: Submit and manage your adoption applications
+- **Dark/Light Mode**: Toggle between dark and light themes for comfortable viewing
 
 ## Project Structure
 
@@ -39,21 +39,21 @@ adopt-all-app/
 ```
 
 Each module follows a clean architecture pattern with:
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">domain</span>: Entities and repository interfaces
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">application</span>: Use cases
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">infrastructure</span>: Implementation details (API client)
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">presentation</span>: UI components
+- **domain**: Entities and repository interfaces
+- **application**: Use cases
+- **infrastructure**: Implementation details (API client)
+- **presentation**: UI components
 
 ## Technologies Used
 
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">React Native</span>
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Expo</span>
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">TypeScript</span>
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Expo Router</span>: File-based routing for Expo apps
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Axios</span>
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Geolib</span>: Geospatial calculations
-- <span style="color: rgb(218, 138, 214); font-weight: bold;">Expo Location</span>: Location services
--<span style="color: rgb(218, 138, 214); font-weight: bold;">Jest</span>
+- **React Native**
+- **Expo**
+- **TypeScript**
+- **Expo Router**: File-based routing for Expo apps
+- **Axios**
+- **Geolib**: Geospatial calculations
+- **Expo Location**: Location services
+- **Jest**
 
 ## Getting Started
 
