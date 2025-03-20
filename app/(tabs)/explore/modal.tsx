@@ -1,6 +1,7 @@
 import { View, TouchableOpacity } from 'react-native';
 import Text from '@/modules/shared/custom/Text';
 import React, { useState } from 'react';
+import { useRouter } from 'expo-router';
 import { useAnimalFilter } from '@/modules/animal/presentation/FilterContext';
 import AnimalLabel from '@/modules/animal/presentation/AnimalLabel';
 import Spacing from '@/modules/shared/custom/Spacing';
@@ -20,16 +21,19 @@ const orderByDisplayText: Record<OrderByOption, string> = {
 
 export default function AnimalFilterSelection() {
     const { filter, updateFilter, resetFilter } = useAnimalFilter();
+    const router = useRouter();
 
     const [tempFilters, setTempFilters] = useState({ ...filter });
 
     const handleApply = () => {
-        updateFilter(tempFilters)
+        updateFilter(tempFilters);
+        router.back();
     };
 
     const handleReset = () => {
-        setTempFilters({ species: 'any', neutered: null, age: null, orderBy: 'desc' })
+        setTempFilters({ species: 'any', neutered: null, age: null, orderBy: 'desc' });
         resetFilter();
+        router.back();
     };
 
     return (
@@ -75,8 +79,8 @@ export default function AnimalFilterSelection() {
             </View>
             <Spacing type='xl' />
             <View style={{ flexDirection: 'row', gap: 8, alignSelf: "center" }}>
-                <Button title="Clear Filters" href="../" onPress={handleReset} />
-                <Button title="Show results" href="../" onPress={handleApply} />
+                <Button title="Clear Filters" onPress={handleReset} />
+                <Button title="Show results" onPress={handleApply} />
             </View>
         </View>
     );
