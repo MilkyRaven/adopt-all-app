@@ -1,7 +1,7 @@
 # Technical Notes
 
 ## Why I'm building this app with Expo?
-    In 2024 React Native published an article that recommended the use of a framework to build React Native Apps. Using a framework like Expo is now the recommended approach when creatng new apps. Currently, the only recommended community-driven framework for RN is Expo. lso, Expo is open source and has very useful services like EAS (Expo Application Services) that allow you to build, deploy and manage apps. I've been using Expo for two years now and I'm very pleased with it's capabilities. 
+In 2024 React Native published an article that recommended the use of a framework to build React Native Apps. Using a framework like Expo is now the recommended approach when creatng new apps. Currently, the only recommended community-driven framework for RN is Expo. lso, Expo is open source and has very useful services like EAS (Expo Application Services) that allow you to build, deploy and manage apps. I've been using Expo for two years now and I'm very pleased with it's capabilities. 
 
 ## Exploring Hexagonal Architecture in Frontend
 
