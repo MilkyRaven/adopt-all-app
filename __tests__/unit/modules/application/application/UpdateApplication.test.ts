@@ -85,11 +85,8 @@ describe("Update an adoption application", () => {
     const updateData = {
       email: "john.updated@example.com",
     };
-
-    // Act
     await updateApplication.execute("lyli7bCvjlUrnQiqSK8e", updateData);
 
-    // Assert
     const updatedApplication = repository.getApplicationById(
       "lyli7bCvjlUrnQiqSK8e"
     );

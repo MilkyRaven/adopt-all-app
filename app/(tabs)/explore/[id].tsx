@@ -1,4 +1,3 @@
-// /app/explore/[id].tsx
 import { StyleSheet, View } from "react-native";
 import Text from "@/modules/shared/custom/Text";
 import { useRouter } from "expo-router";

@@ -1,8 +1,7 @@
-import { View, FlatList, Text, StyleSheet } from 'react-native'
+import { View, FlatList, StyleSheet } from 'react-native'
 import React from 'react'
 import ApplicationThumbnail from './ApplicationThumbnail'
 import { Link } from 'expo-router'
-import useGetApplications from '../infraestructure/hooks/useGetApplications'
 import { spacing } from '@/modules/shared/themes/styles'
 import Spacing from '@/modules/shared/custom/Spacing'
 import Loading from '@/modules/shared/custom/Loading'
@@ -27,7 +26,7 @@ export default function ApplicationList({ applications, loading, error }: Applic
                 renderItem={({ item }) => (
                     <Link href={{
                         pathname: '/applications/[id]',
-                        params: { ...item } //TO-DO: not sure if this is correct, but i want to avoid an extra call
+                        params: { ...item }
                     }}>
                         <ApplicationThumbnail application={item} />
                         <Spacing />

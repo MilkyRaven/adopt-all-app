@@ -20,7 +20,7 @@ export const CustomDarkTheme = {
 };
 
 export const colors = {
-  background: "#D9D9D9", // Default fallback value
+  background: "#D9D9D9",
 };
 export const spacing = {
   xs: 4,

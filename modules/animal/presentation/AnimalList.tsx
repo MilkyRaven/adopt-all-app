@@ -34,7 +34,7 @@ export default function AnimalList({ animals, loading, error }: AnimalListProps)
                         href={{
                             pathname: '/explore/[id]',
                             // @ts-ignore - Passing complex object as params
-                            params: { ...item } //TO-DO: not sure if this is correct, but i want to avoid an extra call
+                            params: { ...item }
                         }}>
                         <AnimalThumbnail {...item} />
                         <Spacing type="sm" />

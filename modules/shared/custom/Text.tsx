@@ -20,7 +20,7 @@ export default function Text({ children, type = 'p', style }: TextProps) {
         type === 'p' && styles.p,
         type === 'support' && styles.support,
         type === 'caption' && styles.caption,
-        { color: theme.colors.text }, // Apply theme text color
+        { color: theme.colors.text },
         style
     ]
 
