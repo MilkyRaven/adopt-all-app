@@ -1,10 +1,10 @@
 # Adopt All App 🐶🐱🐷
 
-Welcome to my project! I'm **Milky** and I've desgined and built this first version of "Adopt All" in a week. It's was conceptualized as **a mobile application to connect people with animals in need of adoption**. 
+Welcome to my project! I'm **Milky** and this is the first version of "Adopt All". The app is designed to **help connect people with animals in need of adoption**. It allows users to browse available animals, filter by various criteria, see animals near their location, and submit adoption applications. It also goes **beyond the idea of a "traditional pet"**, including animals like rats, pigs, and other species, because I believe every animal deserves a loving home. 💖
 
-The app allows users to browse available animals, filter by various criteria, see animals near their location, and submit adoption applications. It also goes **beyond the idea of a "traditional pet"**, including animals like rats, pigs, and other species, because I believe every animal deserves a loving home. 💖
+This was built in 5 days as part of a 7-day challenge. The first two days were focused on planning, refining ideas, and designing a basic wireframe in Figma to serve as a guideline [that you can find here](https://www.figma.com/design/L0bklqHG35m9LVmAQIqix9/Adopt-All). During this time, I also began setting up a custom backend with a REST API, which [you can explore here](https://github.com/MilkyRaven/adopt-all-backend).
 
-<!-- This is a basic README to explain what the app does and how to configure and execute it. For more technical insights, you can check out the <a href="" style="color: rgb(218, 138, 214);">blog post</a> I wrote about this project. There you can find my thought process, struggles, solutions and what I would improve in the future. -->
+<!-- This is a basic README to explain what the app does and how to configure and execute it. For more technical insights, you can check out the [blog post]() I wrote about this project. There you can find my thought process, struggles, solutions and what I would improve in the future. -->
 
 Okay, now let's go with an overview of the app's features!
 
