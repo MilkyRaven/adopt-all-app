@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Application } from "../../domain/entities/Application";
 import { repository } from "../repositories";
 import { router } from "expo-router";
+import { useUser } from "@/modules/user/infraestructure/UserContext";
 
 type ApplicationForm = Omit<
   Application,
@@ -18,6 +19,7 @@ export default function useApplicationForm({
     email: email ?? "",
     comments: comments ?? "",
   });
+  const { user } = useUser();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,8 +36,7 @@ export default function useApplicationForm({
     const application: Application = {
       ...formData,
       animalId: animalId as string,
-      //hardcoded just for showing purposes to avoid user authentication
-      userId: "5X1x1RbgnCLAoXxBvBOf",
+      userId: user.id,
       id: "",
       createdAt: new Date().toISOString(),
     };
