@@ -17,7 +17,6 @@ export default function Explore() {
 
   useFocusEffect(
     useCallback(() => {
-      console.log("Explore screen is focused");
       if (prevPathRef.current?.includes("/explore")) {
       } else if (prevPathRef.current) {
         refetch()
