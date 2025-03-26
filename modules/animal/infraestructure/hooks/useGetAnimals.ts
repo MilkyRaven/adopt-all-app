@@ -18,7 +18,7 @@ export const useGetAnimals = () => {
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { filter } = useAnimalFilter();
+  const { filter, buildQuery } = useAnimalFilter();
   const { location } = useLocation();
 
   const calculateAnimalDistancesFromUser = (
@@ -37,20 +37,8 @@ export const useGetAnimals = () => {
     try {
       setLoading(true);
       setError(null);
-      //TO-DO -> could refactor this query construction?
-      const queryParams: string[] = [];
 
-      if (filter.species && filter.species !== "all") {
-        queryParams.push(`species=${filter.species}`);
-      }
-
-      if (filter.age !== null) {
-        queryParams.push(`age=${filter.age}`);
-      }
-
-      queryParams.push(`orderBy=${filter.orderBy}`);
-
-      const queryString = queryParams.join("&");
+      const queryString = buildQuery(filter);
       const findAnimals = new FindAnimals(repository.application);
 
       const result = await findAnimals.execute(queryString);
