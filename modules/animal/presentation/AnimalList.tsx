@@ -6,10 +6,10 @@ import Spacing from "@/modules/shared/custom/Spacing";
 import { spacing } from "@/modules/shared/themes/styles";
 import Loading from "@/modules/shared/custom/Loading";
 import EmptyState from '@/modules/shared/custom/EmptyState';
-import { AnimalWithDistance } from '../domain/entities/Animal';
+import { Animal } from '../domain/entities/Animal';
 
 interface AnimalListProps {
-    animals: AnimalWithDistance[];
+    animals: Animal[];
     loading: boolean;
     error: string | null;
 }

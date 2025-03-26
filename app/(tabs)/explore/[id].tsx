@@ -20,7 +20,7 @@ export default function AnimalDetail() {
                     <Spacing type="sm" />
                     <Text type="h3">{animalDetails.species}</Text>
                     <Spacing type="xs" />
-                    <Text type="h3">{animalDetails.distance} Km from you</Text>
+                    <Text type="h3">{animalDetails.distance ? `${animalDetails.distance} Km from you` : "Distance not available"}</Text>
                     <Spacing type="sm" />
                     <View style={{ flexDirection: 'row', gap: spacing.sm }}>
                         <AnimalLabel labelText={animalDetails.age as string} />

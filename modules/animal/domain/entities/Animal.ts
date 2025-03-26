@@ -10,7 +10,5 @@ export interface Animal {
   description: string;
   entryDate: string;
   location: Location;
-}
-export interface AnimalWithDistance extends Animal {
-  distance: number;
+  distance?: number;
 }

@@ -69,7 +69,7 @@ The only use case here is **findAnimals**, which executes a GET with a query to 
 
 At this point, the query calls all animals without limit or pagination, something that clearly would need to be improved. I would have liked to add more complex queries, for example, filtering by whether an animal is sterilized or not was an idea at the beginning, but I preferred to keep it simple due to time constraints.
 
-Regarding the animal domain, two interfaces were defined: Animal and AnimalWithDistance. Animal, by itself, is stored with its geographical location (lat,lon), but then it needs to be extended when calculating the distance between the animal and the user. 
+Regarding the animal domain, the Animal interface is defined with its geographical location (lat,lon) and an optional distance property. This distance property is populated when calculating the distance between the animal and the user, but remains undefined when the user's location is not available.
 
 In the infraestructure section, we have a hook that is responsible for making the call to the database to obtain the list of animals. It uses both the filter hook and the location hook to make decisions. 
 

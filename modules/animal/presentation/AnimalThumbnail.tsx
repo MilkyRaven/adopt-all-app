@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import Text from "@/modules/shared/custom/Text";
 import AnimalAvatar from "./AnimalAvatar";
-import { AnimalWithDistance } from "@/modules/animal/domain/entities/Animal";
+import { Animal } from "@/modules/animal/domain/entities/Animal";
 import AnimalLabel from "./AnimalLabel";
 import { borderRadius, colors, spacing } from "@/modules/shared/themes/styles";
 import { useTheme } from "@react-navigation/native";
@@ -15,7 +15,7 @@ export default function AnimalThumbnail({
     neutered,
     age,
     distance
-}: AnimalWithDistance) {
+}: Animal) {
     const theme = useTheme()
     return (
         <View style={[styles.animalContainer, { backgroundColor: theme.colors.card }]}>
@@ -23,7 +23,7 @@ export default function AnimalThumbnail({
             <View style={styles.details}>
                 <Text type="h2">{name}</Text>
                 <Text type="support">{species}</Text>
-                <Text type="support">{distance} Km from you</Text>
+                <Text type="support">{distance !== undefined ? `${distance} Km from you` : 'Distance unknown'}</Text>
                 <View style={styles.labelContainer}>
                     <AnimalLabel labelText={neutered ? 'Neutered' : 'Not Neutered'} />
                     <AnimalLabel labelText={age} />
